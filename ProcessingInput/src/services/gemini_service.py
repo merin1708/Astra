@@ -103,3 +103,30 @@ class GeminiService:
         except Exception as e:
             print(f"An error occurred during content generation: {e}")
             raise RuntimeError(f"Gemini API Error: {str(e)}")
+
+    def analyze_batch_summaries(self, batch_data: list):
+        print("Analyzing combined batch data...")
+        prompt = f"""
+        You are an expert quality assurance manager. Review the following summaries from {len(batch_data)} separate audio interactions.
+        
+        Generate an OVERALL SUMMARY with these strict requirements:
+        1. State explicitly the total number of audio files processed.
+        2. Provide an overall summary of all the customer interactions in these files.
+        3. Provide a unified assessment classifying the performance of ALL agents across all files.
+        4. CRITICAL: Explicitly state whether ANY agent used foul language in ANY of the files, and if so, who and what was said.
+        
+        Return exactly in this JSON format:
+        {{
+            "total_files_analyzed": {len(batch_data)},
+            "overall_batch_summary": "Comprehensive summary of what happened across all files.",
+            "overall_agent_performance": "Overview of how agents performed collectively across all files.",
+            "foul_language_report": {{
+                "any_foul_language_used": true/false,
+                "details": "Specific details on foul language usage by agents, or 'None detected'."
+            }}
+        }}
+        """
+        
+        # Convert the batch data to a JSON string to pass to the model
+        batch_context = json.dumps(batch_data, indent=2)
+        return self._generate_analysis([batch_context, prompt])

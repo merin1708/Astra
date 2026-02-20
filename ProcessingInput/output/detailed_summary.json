@@ -1,25 +1,20 @@
 {
     "detailed_summary": {
-        "overall_summary": "This video contrasts two different customer service approaches\u2014represented by agents Claire and Candace\u2014handling the same frustrated customer, Tabitha Ratchet, who is missing a parcel. In the first scenario, Claire is dismissive, robotic, and eventually condescending, leading the customer to vow never to shop with the company again. In the second scenario, Candace uses empathy, explains company jargon, and validates the customer's concerns, resulting in a much more cooperative and calm resolution where the customer feels supported despite the shipping error.",
+        "overall_summary": "A customer calls the electricity office to complain about a power outage at his home that hasn't been fixed for 2-3 days, despite previous reports. The agent claims technicians visited the day before but left because no one answered the doorbell. The customer points out the logical fallacy: the electric doorbell doesn't work because there is no power. The call ends with the customer becoming verbally abusive towards the office staff.",
         "foul_language_used_anywhere": true,
-        "foul_language_details": "The customer, Tabitha Ratchet, used the word 'fucking' during the first call with Claire to express her frustration about being home all day."
+        "foul_language_details": "The customer used the Malayalam slur 'naayinte mone' (son of a dog/bitch) directed at the employees."
     },
     "agents_analysis": [
         {
-            "agent_name": "Claire",
-            "behavior": "Claire's behavior was dismissive and defensive. She failed to empathize with the customer's situation, spoke in a robotic tone, and became overtly condescending. She insulted the customer's intelligence and focused more on company policy than on solving the problem or calming the situation.",
-            "rating": "2/10. Claire's lack of emotional intelligence and rude attitude escalated a standard complaint into a lost customer and a potential brand reputation issue."
-        },
-        {
-            "agent_name": "Candace",
-            "behavior": "Candace displayed excellent customer service skills. She was empathetic from the start, validated Tabitha's frustration, and used 'we' language. She took the time to explain technical terms like 'PDNR' and 'dropship' to ensure the customer understood the internal process, which built trust.",
-            "rating": "9.5/10. Candace successfully de-escalated a difficult situation and maintained a positive professional image for the company."
+            "agent_name": "Electricity Office Agent",
+            "behavior": "The agent remained calm and professional in tone. However, he displayed a significant lack of practical logic by justifying the technician's failure to resolve the issue because the electric calling bell wasn't answered during a power outage.",
+            "rating": "4/10, because while he was polite, the reasoning provided for the service failure was incompetent and frustrated the customer further."
         }
     ],
     "customer_analysis": {
-        "customer_name": "Tabitha Ratchet",
-        "genuineness": "Highly genuine. Tabitha's frustration stems from a legitimate shipping error where a delivery was falsely marked as 'delivered' to a non-existent front porch.",
-        "behavior": "Tabitha starts both calls frustrated. With Claire, she becomes increasingly hostile and abusive in response to the agent's coldness. With Candace, she remains firm but becomes much more cooperative, showing that her behavior is heavily influenced by the quality of the service provided.",
-        "satisfaction_level": "Mixed. She ended the first call 'Very Dissatisfied' and angry. She ended the second call 'Satisfied' with the proposed resolution, even though the problem wasn't yet fully solved."
+        "customer_name": "Unnamed Resident",
+        "genuineness": "The customer's issue appears genuine as he provides specific location details (near the Anganwadi) and points out a very logical flaw in the agent's story.",
+        "behavior": "Initially frustrated and complaining, the customer becomes sarcastically angry when he realizes the technician tried to use an electric bell during an outage. He eventually loses his temper and uses foul language.",
+        "satisfaction_level": "Very Dissatisfied, as his power issue remains unresolved and he feels the service department is incompetent."
     }
 }

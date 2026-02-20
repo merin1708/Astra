@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Processing Dashboard</title>
+    <!-- Chart.js for visualizations -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg-dark: #0f111a;
+            --card-bg: rgba(30, 33, 49, 0.7);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.2), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.2), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1), transparent 60%);
+            background-attachment: fixed;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .navBtn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .navBtn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card {
+            background: rgba(30, 33, 49, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 1.5rem 2.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .metric-block {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .metric-header {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 250px;
+            flex-shrink: 0;
+        }
+
+        .metric-value {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .metric-value.large {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .card h2 {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            color: var(--text-main);
+            font-size: 1.5rem;
+        }
+
+        .foul-language-alert {
+            display: none;
+            background: rgba(239, 68, 68, 0.15);
+            border-left: 6px solid var(--danger);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .foul-language-safe {
+            display: none;
+            background: rgba(16, 185, 129, 0.15);
+            border-left: 6px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+        }
+
+        .alert-title {
+            font-weight: 700;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .file-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .file-card:hover {
+            transform: translateY(-4px);
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-card-title {
+            font-weight: bold;
+            color: var(--accent);
+            font-size: 1.1rem;
+            word-break: break-all;
+        }
+
+        .file-card-badge {
+            align-self: flex-start;
+            padding: 4px 8px;
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+        <header>
+            <a href="/" class="navBtn">← Back to Home</a>
+            <h1>Batch Processing Summary</h1>
+            <p style="color: var(--text-muted)">Aggregated Quality Assurance Metrics</p>
+        </header>
+
+        <div class="card">
+            <div class="metric-block" style="align-items: baseline;">
+                <div class="metric-header">Total Files Analyzed</div>
+                <div class="metric-value large" id="total_files_analyzed">-</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Overall Executive Summary</h2>
+            <p id="overall_batch_summary" class="metric-value">Loading data...</p>
+        </div>
+
+        <div class="card">
+            <h2>Agent Performance Overview</h2>
+            <p id="overall_agent_performance" class="metric-value">Loading data...</p>
+        </div>
+
+        <!-- Foul Language Modules -->
+        <div id="foul-alert" class="foul-language-alert">
+            <div class="alert-title" style="color: var(--danger);">
+                ⚠ Foul Language Detected Across Batch
+            </div>
+            <p id="foul_language_details_bad" style="margin:0; color: #fca5a5; line-height: 1.5;"></p>
+        </div>
+
+        <div id="safe-alert" class="foul-language-safe">
+            <div class="alert-title" style="color: var(--success);">
+                ✅ Clean Interaction Batch
+            </div>
+            <p id="foul_language_details_good" style="margin:0; color: #6ee7b7; line-height: 1.5;"></p>
+        </div>
+
+        <!-- Aggregate Charts -->
+        <div class="grid-layout">
+            <div class="card" style="margin-bottom: 0;">
+                <h2>Total Speaking Share (Batch)</h2>
+                <div class="chart-container" style="display: flex; justify-content: center;">
+                    <canvas id="batchSpeakingPie"></canvas>
+                </div>
+            </div>
+            <div class="card" style="margin-bottom: 0;">
+                <h2>Total Emotion Occurrences (Batch)</h2>
+                <div class="chart-container">
+                    <canvas id="batchEmotionBar"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- File Grid -->
+        <h2 style="margin-top: 3rem; margin-bottom: 0.5rem; color: var(--text-main);">Individual Processed Files</h2>
+        <p style="color: var(--text-muted); margin-top: 0;">Click any card to view its deep-dive dashboard.</p>
+        <div class="file-grid" id="file-grid">
+            <!-- Cards injected via JS -->
+        </div>
+
+    </div>
+
+    <script>
+        // Helper: Convert "MM:SS" to seconds
+        function timeToSeconds(timeStr) {
+            if (!timeStr) return 0;
+            const parts = timeStr.split(':');
+            return parseInt(parts[0]) * 60 + parseInt(parts[1]);
+        }
+
+        async function loadBatchData() {
+            try {
+                // 1. Fetch Overall Summary
+                const response = await fetch('/output/overall_summary.json');
+                if (!response.ok) {
+                    throw new Error("overall_summary.json not found processing yet.");
+                }
+                const data = await response.json();
+
+                document.getElementById('total_files_analyzed').innerText = data.total_files_analyzed || "N/A";
+                document.getElementById('overall_batch_summary').innerText = data.overall_batch_summary || "No summary provided.";
+                document.getElementById('overall_agent_performance').innerText = data.overall_agent_performance || "No performance data provided.";
+
+                const foulReport = data.foul_language_report || {};
+                if (foulReport.any_foul_language_used) {
+                    document.getElementById('foul-alert').style.display = 'block';
+                    document.getElementById('foul_language_details_bad').innerText = foulReport.details || "No specifics provided.";
+                } else {
+                    document.getElementById('safe-alert').style.display = 'block';
+                    document.getElementById('foul_language_details_good').innerText = foulReport.details || "No foul language detected.";
+                }
+
+                // 2. Fetch File List & Build Aggregate Data
+                const listResponse = await fetch('/api/batch_list');
+                const listData = await listResponse.json();
+
+                const fileGrid = document.getElementById('file-grid');
+                fileGrid.innerHTML = '';
+
+                let totalSpeakingTime = {};
+                let emotionCounts = { "Happy": 0, "Sad": 0, "Angry": 0, "Neutral": 0 };
+
+                for (const filename of listData.files) {
+                    // Build Card
+                    const displayName = filename.replace('summary_', '').replace('.json', '');
+                    const card = document.createElement('a');
+                    card.href = `/dashboard?file=${filename}`;
+                    card.className = 'file-card';
+                    card.innerHTML = `
+                        <div class="file-card-badge">Analyzed</div>
+                        <div class="file-card-title">${displayName}</div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: auto;">➔ View Dashboard</div>
+                    `;
+                    fileGrid.appendChild(card);
+
+                    // Fetch Individual File Details for Aggregation
+                    try {
+                        const detailRes = await fetch(`/output/${filename}`);
+                        if (detailRes.ok) {
+                            const detailJson = await detailRes.json();
+                            // Assume original script saves segments inside the main body or under detailed_summary
+                            let segments = detailJson.segments;
+                            if (!segments && detailJson.detailed_summary && detailJson.detailed_summary.segments) {
+                                segments = detailJson.detailed_summary.segments;
+                            }
+
+                            if (segments) {
+                                segments.forEach(seg => {
+                                    // Time Aggregation
+                                    const duration = timeToSeconds(seg.end_time) - timeToSeconds(seg.start_time);
+                                    const speakerClean = seg.speaker.split(' (')[0];
+                                    if (!totalSpeakingTime[speakerClean]) totalSpeakingTime[speakerClean] = 0;
+                                    totalSpeakingTime[speakerClean] += duration;
+
+                                    // Emotion Aggregation
+                                    if (emotionCounts[seg.emotion] !== undefined) {
+                                        emotionCounts[seg.emotion]++;
+                                    }
+                                });
+                            }
+                        }
+                    } catch (e) {
+                        console.warn(`Could not aggregate data for ${filename}`);
+                    }
+                }
+
+                // 3. Render Aggregate Charts
+                renderCharts(totalSpeakingTime, emotionCounts);
+
+            } catch (error) {
+                console.error("Error loading JSON data:", error);
+                document.getElementById('overall_batch_summary').innerText = "Failed to load batch analysis data. Please ensure you have run the 'python batch_analyze.py' script first.";
+                document.getElementById('overall_agent_performance').innerText = "Awaiting script execution.";
+            }
+        }
+
+        function renderCharts(speakingTimeData, emotionData) {
+            // SPEAKING PIE CHART
+            const pieContainer = document.getElementById('batchSpeakingPie').parentElement;
+            if (Object.keys(speakingTimeData).length === 0) {
+                pieContainer.innerHTML = '<div style="display:flex; height:100%; align-items:center; justify-content:center; color: var(--text-muted); font-style: italic;">No speaker data analyzed yet.</div>';
+            } else {
+                const pieCtx = document.getElementById('batchSpeakingPie').getContext('2d');
+                new Chart(pieCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(speakingTimeData),
+                        datasets: [{
+                            data: Object.values(speakingTimeData),
+                            backgroundColor: [
+                                'rgba(59, 130, 246, 0.85)', 'rgba(16, 185, 129, 0.85)',
+                                'rgba(245, 158, 11, 0.85)', 'rgba(139, 92, 246, 0.85)'
+                            ],
+                            borderColor: 'rgba(30, 33, 49, 1)',
+                            borderWidth: 3,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: { animateScale: true, animateRotate: true },
+                        plugins: {
+                            legend: { position: 'right', labels: { color: '#e2e8f0', font: { family: 'Inter', size: 13 } } }
+                        }
+                    }
+                });
+            }
+
+            // EMOTION BAR CHART
+            const barContainer = document.getElementById('batchEmotionBar').parentElement;
+            if (Object.values(emotionData).every(val => val === 0)) {
+                barContainer.innerHTML = '<div style="display:flex; height:100%; align-items:center; justify-content:center; color: var(--text-muted); font-style: italic;">No emotion data analyzed yet.</div>';
+            } else {
+                const barCtx = document.getElementById('batchEmotionBar').getContext('2d');
+                new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(emotionData),
+                        datasets: [{
+                            label: 'Total Occurrences',
+                            data: Object.values(emotionData),
+                            backgroundColor: [
+                                'rgba(16, 185, 129, 0.7)', // Happy
+                                'rgba(59, 130, 246, 0.7)', // Sad
+                                'rgba(239, 68, 68, 0.7)',  // Angry
+                                'rgba(148, 163, 184, 0.7)' // Neutral
+                            ],
+                            borderColor: [
+                                'rgb(16, 185, 129)', 'rgb(59, 130, 246)',
+                                'rgb(239, 68, 68)', 'rgb(148, 163, 184)'
+                            ],
+                            borderWidth: 2,
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        animation: {
+                            duration: 1500,
+                            easing: 'easeOutQuart'
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { color: '#94a3b8', stepSize: 1, font: { family: 'Inter' } },
+                                grid: { color: 'rgba(255,255,255,0.05)' }
+                            },
+                            x: {
+                                ticks: { color: '#e2e8f0', font: { family: 'Inter', weight: 'bold' } },
+                                grid: { display: false }
+                            }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+        }
+
+        // Initialize
+        loadBatchData();
+    </script>
+
+</body>
+
+</html>

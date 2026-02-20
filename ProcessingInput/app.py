@@ -38,6 +38,19 @@ def index():
 def dashboard():
     return render_template('dashboard.html')
 
+@app.route('/batch_dashboard')
+def batch_dashboard():
+    return render_template('batch_dashboard.html')
+
+@app.route('/api/batch_list')
+def batch_list():
+    import glob
+    # Find all individual summary files in output dir
+    files = glob.glob(os.path.join(OUTPUT_FOLDER, 'summary_*.json'))
+    # Extract just the basenames
+    filenames = [os.path.basename(f) for f in files]
+    return jsonify({"files": filenames})
+
 @app.route('/output/<path:filename>')
 def serve_output(filename):
     return flask.send_from_directory(OUTPUT_FOLDER, filename)

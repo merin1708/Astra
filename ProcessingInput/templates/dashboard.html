@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,19 +26,35 @@
             margin: 0;
             padding: 2rem;
             min-height: 100vh;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.2), transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.2), transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.1), transparent 60%);
+            background-attachment: fixed;
         }
 
         .dashboard-container {
             max-width: 1400px;
             margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         header {
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             text-align: center;
+            position: relative;
         }
 
         h1 {
@@ -45,17 +62,27 @@
             margin-bottom: 0.5rem;
             background: linear-gradient(to right, #60a5fa, #34d399);
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .summary-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            padding: 1.5rem;
+            background: rgba(30, 33, 49, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
+            padding: 1.5rem 2.5rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            line-height: 1.6;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .foul-language-alert {
@@ -75,13 +102,21 @@
         }
 
         .chart-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
+            background: rgba(30, 33, 49, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 20px;
             padding: 1.5rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
             position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .chart-card h2 {
@@ -107,9 +142,18 @@
 
         .rating-card {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 1.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .rating-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
         }
 
         .rating-score {
@@ -132,10 +176,10 @@
             font-size: 0.85rem;
             border-radius: 4px;
             color: white;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
             transition: transform 0.2s;
         }
-        
+
         .heatmap-cell:hover {
             transform: scale(1.05);
             z-index: 10;
@@ -158,115 +202,154 @@
         }
     </style>
 </head>
+
 <body>
 
-<div class="dashboard-container">
-    <header>
-        <h1>Interaction Analysis Dashboard</h1>
-        <p style="color: var(--text-muted)">Deep AI insights from customer conversations</p>
-    </header>
+    <div class="dashboard-container">
+        <header>
+            <div style="position: absolute; left: 0; top: 1rem; display: flex; gap: 10px;">
+                <a href="/"
+                    style="padding: 10px 15px; background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(10px); font-size: 0.9rem; transition: all 0.3s ease;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.transform='translateY(-2px) scale(1.05)';"
+                    onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.transform='translateY(0) scale(1)';">
+                    ← Home
+                </a>
+                <a href="/batch_dashboard" id="back-to-batch"
+                    style="padding: 10px 15px; background: rgba(59, 130, 246, 0.15); color: #60a5fa; text-decoration: none; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3); backdrop-filter: blur(10px); font-size: 0.9rem; display: none; transition: all 0.3s ease;"
+                    onmouseover="this.style.background='rgba(59, 130, 246, 0.25)'; this.style.transform='translateY(-2px) scale(1.05)';"
+                    onmouseout="this.style.background='rgba(59, 130, 246, 0.15)'; this.style.transform='translateY(0) scale(1)';">
+                    ← Batch Dashboard
+                </a>
+            </div>
+            <h1>Interaction Analysis Dashboard</h1>
+            <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Deep AI insights from customer conversations</p>
+            <p id="file-subtitle" style="color: var(--accent); font-weight: bold; margin-top: 0;"></p>
+        </header>
 
-    <div class="summary-card">
-        <h2 style="margin-top: 0">Conversation Overview</h2>
-        <p id="overall-summary">Loading summary...</p>
-        
-        <div id="foul-language-box" class="foul-language-alert">
-            <strong style="color: var(--danger)">⚠ Foul Language Detected</strong>
-            <p id="foul-language-text" style="margin: 0.5rem 0 0 0; color: #fca5a5;"></p>
-        </div>
-    </div>
+        <div class="summary-card">
+            <h2 style="margin-top: 0">Conversation Overview</h2>
+            <p id="overall-summary">Loading summary...</p>
 
-    <div class="grid-layout">
-        <!-- Speaking Time Pie Chart -->
-        <div class="chart-card">
-            <h2>Speaking Time by Participant</h2>
-            <div class="chart-container" style="display: flex; justify-content: center;">
-                <canvas id="speakingTimeChart"></canvas>
+            <div id="foul-language-box" class="foul-language-alert">
+                <strong style="color: var(--danger)">⚠ Foul Language Detected</strong>
+                <p id="foul-language-text" style="margin: 0.5rem 0 0 0; color: #fca5a5;"></p>
             </div>
         </div>
 
-        <!-- Emotion Timeline Line Chart -->
-        <div class="chart-card">
-            <h2>Customer Emotion Journey</h2>
-            <div class="chart-container">
-                <canvas id="emotionTimelineChart"></canvas>
+        <div class="grid-layout">
+            <!-- Speaking Time Pie Chart -->
+            <div class="chart-card">
+                <h2>Speaking Time by Participant</h2>
+                <div class="chart-container" style="display: flex; justify-content: center;">
+                    <canvas id="speakingTimeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Emotion Timeline Line Chart -->
+            <div class="chart-card">
+                <h2>Customer Emotion Journey</h2>
+                <div class="chart-container">
+                    <canvas id="emotionTimelineChart"></canvas>
+                </div>
             </div>
         </div>
+
+        <!-- Emotion Heatmap -->
+        <div class="chart-card" style="margin-bottom: 2rem;">
+            <h2>Emotion Intensity Heatmap (Duration in Seconds)</h2>
+            <div id="heatmap-container">
+                <!-- Heatmap generated via JS -->
+            </div>
+            <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem; gap: 10px;">
+                <span style="font-size: 0.8rem; color: var(--text-muted)">Low (0s)</span>
+                <div
+                    style="width: 200px; height: 10px; border-radius: 5px; background: linear-gradient(to right, #10b981, #ef4444);">
+                </div>
+                <span style="font-size: 0.8rem; color: var(--text-muted)">High</span>
+            </div>
+        </div>
+
+        <!-- Agent Ratings -->
+        <div class="chart-card">
+            <h2>Performance Evaluation</h2>
+            <div class="ratings-container" id="ratings-container">
+                <!-- Ratings injected via JS -->
+            </div>
+        </div>
+
     </div>
 
-    <!-- Emotion Heatmap -->
-    <div class="chart-card" style="margin-bottom: 2rem;">
-        <h2>Emotion Intensity Heatmap (Duration in Seconds)</h2>
-        <div id="heatmap-container">
-            <!-- Heatmap generated via JS -->
-        </div>
-        <div style="display: flex; justify-content: center; align-items: center; margin-top: 1rem; gap: 10px;">
-            <span style="font-size: 0.8rem; color: var(--text-muted)">Low (0s)</span>
-            <div style="width: 200px; height: 10px; border-radius: 5px; background: linear-gradient(to right, #10b981, #ef4444);"></div>
-            <span style="font-size: 0.8rem; color: var(--text-muted)">High</span>
-        </div>
-    </div>
+    <script>
+        // Fetch JSON Data
+        async function loadData() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const specificFile = urlParams.get('file');
 
-    <!-- Agent Ratings -->
-    <div class="chart-card">
-        <h2>Performance Evaluation</h2>
-        <div class="ratings-container" id="ratings-container">
-            <!-- Ratings injected via JS -->
-        </div>
-    </div>
+                let analysisData;
+                let detailedData;
 
-</div>
+                if (specificFile) {
+                    // If checking an individual batch file, it contains ALL information (segments and metrics)
+                    document.getElementById('back-to-batch').style.display = 'inline-block';
+                    document.getElementById('file-subtitle').innerText = `Viewing: ${specificFile.replace("summary_", "").replace(".json", "")}`;
 
-<script>
-    // Fetch JSON Data
-    async function loadData() {
-        try {
-            // Because we are running locally without a server, we'll fetch the JSON files. 
-            // In a real environment, this might be an API call.
-            const analysisResponse = await fetch('output/audio_analysis.json');
-            const analysisData = await analysisResponse.json();
-            
-            const detailedResponse = await fetch('output/detailed_summary.json');
-            const detailedData = await detailedResponse.json();
+                    const response = await fetch(`output/${specificFile}`);
+                    if (!response.ok) throw new Error("File not found");
+                    detailedData = await response.json();
+                    analysisData = detailedData; // Batch individual summaries contain the segments inside "detailed_summary" parent conceptually, but the python script saves the whole dictionary. Let's adapt.
 
-            populateDashboard(analysisData, detailedData);
-        } catch (error) {
-            console.error("Error loading JSON data:", error);
-            document.getElementById('overall-summary').innerText = "Failed to load analysis data. Please ensure the dashboard is running on a local web server (e.g., using 'python -m http.server').";
+                    // Safety map depending on how batch dictionary is structured
+                    if (!analysisData.segments && detailedData.detailed_summary.segments) {
+                        analysisData.segments = detailedData.detailed_summary.segments;
+                    }
+                } else {
+                    // Standard mode (from web upload)
+                    const analysisResponse = await fetch('output/audio_analysis.json');
+                    analysisData = await analysisResponse.json();
+
+                    const detailedResponse = await fetch('output/detailed_summary.json');
+                    detailedData = await detailedResponse.json();
+                }
+
+                populateDashboard(analysisData, detailedData);
+            } catch (error) {
+                console.error("Error loading JSON data:", error);
+                document.getElementById('overall-summary').innerText = "Failed to load analysis data.";
+            }
         }
-    }
 
-    // Helper: Convert "MM:SS" to seconds
-    function timeToSeconds(timeStr) {
-        const parts = timeStr.split(':');
-        return parseInt(parts[0]) * 60 + parseInt(parts[1]);
-    }
-
-    function populateDashboard(rawAnalysis, detailedData) {
-        // 1. Populate Summary & Foul Language
-        const summaryObj = detailedData.detailed_summary;
-        document.getElementById('overall-summary').innerText = summaryObj.overall_summary;
-        
-        if (summaryObj.foul_language_used_anywhere) {
-            const foulBox = document.getElementById('foul-language-box');
-            document.getElementById('foul-language-text').innerText = summaryObj.foul_language_details;
-            foulBox.style.display = 'block';
+        // Helper: Convert "MM:SS" to seconds
+        function timeToSeconds(timeStr) {
+            const parts = timeStr.split(':');
+            return parseInt(parts[0]) * 60 + parseInt(parts[1]);
         }
 
-        // 2. Populate Ratings
-        const ratingsContainer = document.getElementById('ratings-container');
-        ratingsContainer.innerHTML = '';
-        
-        detailedData.agents_analysis.forEach(agent => {
-            const card = document.createElement('div');
-            card.className = 'rating-card';
-            
-            // Extract numeric score from string like "9/10"
-            const scoreMatch = agent.rating.match(/(\d+)\/10/);
-            const numScore = scoreMatch ? parseInt(scoreMatch[1]) : 0;
-            const scoreColor = numScore >= 8 ? '#10b981' : (numScore >= 5 ? '#f59e0b' : '#ef4444');
+        function populateDashboard(rawAnalysis, detailedData) {
+            // 1. Populate Summary & Foul Language
+            const summaryObj = detailedData.detailed_summary;
+            document.getElementById('overall-summary').innerText = summaryObj.overall_summary;
 
-            card.innerHTML = `
+            if (summaryObj.foul_language_used_anywhere) {
+                const foulBox = document.getElementById('foul-language-box');
+                document.getElementById('foul-language-text').innerText = summaryObj.foul_language_details;
+                foulBox.style.display = 'block';
+            }
+
+            // 2. Populate Ratings
+            const ratingsContainer = document.getElementById('ratings-container');
+            ratingsContainer.innerHTML = '';
+
+            detailedData.agents_analysis.forEach(agent => {
+                const card = document.createElement('div');
+                card.className = 'rating-card';
+
+                // Extract numeric score from string like "9/10"
+                const scoreMatch = agent.rating.match(/(\d+)\/10/);
+                const numScore = scoreMatch ? parseInt(scoreMatch[1]) : 0;
+                const scoreColor = numScore >= 8 ? '#10b981' : (numScore >= 5 ? '#f59e0b' : '#ef4444');
+
+                card.innerHTML = `
                 <h3 style="margin-top: 0; color: var(--text-main)">Agent: ${agent.agent_name}</h3>
                 <div class="rating-score" style="color: ${scoreColor}">${agent.rating}</div>
                 <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">${agent.behavior}</p>
@@ -274,14 +357,14 @@
                     <em>${agent.justify || 'No justification provided.'}</em>
                 </div>
             `;
-            ratingsContainer.appendChild(card);
-        });
+                ratingsContainer.appendChild(card);
+            });
 
-        // Add Customer to ratings block
-        const customer = detailedData.customer_analysis;
-        const custCard = document.createElement('div');
-        custCard.className = 'rating-card';
-        custCard.innerHTML = `
+            // Add Customer to ratings block
+            const customer = detailedData.customer_analysis;
+            const custCard = document.createElement('div');
+            custCard.className = 'rating-card';
+            custCard.innerHTML = `
             <h3 style="margin-top: 0; color: var(--text-main)">Customer: ${customer.customer_name}</h3>
             <div style="margin: 0.5rem 0; font-weight: bold; color: #a78bfa;">Status: ${customer.satisfaction_level}</div>
             <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">${customer.behavior}</p>
@@ -289,206 +372,207 @@
                 <em>Genuineness: ${customer.genuineness}</em>
             </div>
         `;
-        ratingsContainer.appendChild(custCard);
+            ratingsContainer.appendChild(custCard);
 
-        // Process Segments Data
-        const segments = rawAnalysis.segments || detailedData.segments;
-        if (!segments) return;
+            // Process Segments Data
+            const segments = rawAnalysis.segments || detailedData.segments;
+            if (!segments) return;
 
-        // Data processing for charts
-        const speakingTime = {};
-        const customerTimeline = [];
-        
-        // Heatmap data structure: [Speaker][Emotion] = Total Duration in seconds
-        const heatmapData = {};
-        const allEmotions = new Set();
-        
-        segments.forEach(seg => {
-            const duration = timeToSeconds(seg.end_time) - timeToSeconds(seg.start_time);
-            const speakerClean = seg.speaker.split(' (')[0]; // Clean up "Speaker 1 (Customer)" to "Speaker 1"
-            
-            // Speaking Time Pie
-            if (!speakingTime[speakerClean]) speakingTime[speakerClean] = 0;
-            speakingTime[speakerClean] += duration;
+            // Data processing for charts
+            const speakingTime = {};
+            const customerTimeline = [];
 
-            // Customer Timeline (Assuming Tabitha is the customer based on JSON)
-            if (speakerClean.includes("Tabitha") || speakerClean.toLowerCase().includes("customer")) {
-                const intensityMap = { "Angry": -1, "Sad": -0.5, "Neutral": 0, "Happy": 1 };
-                customerTimeline.push({
-                    x: seg.start_time,
-                    y: intensityMap[seg.emotion] || 0,
-                    label: seg.emotion
-                });
-            }
+            // Heatmap data structure: [Speaker][Emotion] = Total Duration in seconds
+            const heatmapData = {};
+            const allEmotions = new Set();
 
-            // Heatmap Setup
-            if (!heatmapData[speakerClean]) heatmapData[speakerClean] = {};
-            if (!heatmapData[speakerClean][seg.emotion]) heatmapData[speakerClean][seg.emotion] = 0;
-            heatmapData[speakerClean][seg.emotion] += duration;
-            allEmotions.add(seg.emotion);
-        });
+            segments.forEach(seg => {
+                const duration = timeToSeconds(seg.end_time) - timeToSeconds(seg.start_time);
+                const speakerClean = seg.speaker.split(' (')[0]; // Clean up "Speaker 1 (Customer)" to "Speaker 1"
 
-        // 3. Render Pie Chart
-        const pieCtx = document.getElementById('speakingTimeChart').getContext('2d');
-        new Chart(pieCtx, {
-            type: 'doughnut',
-            data: {
-                labels: Object.keys(speakingTime),
-                datasets: [{
-                    data: Object.values(speakingTime),
-                    backgroundColor: [
-                        'rgba(59, 130, 246, 0.8)', // Blue
-                        'rgba(16, 185, 129, 0.8)', // Green
-                        'rgba(245, 158, 11, 0.8)', // Amber
-                        'rgba(139, 92, 246, 0.8)'  // Purple
-                    ],
-                    borderColor: 'rgba(30, 33, 49, 1)',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: { position: 'right', labels: { color: '#e2e8f0' } }
+                // Speaking Time Pie
+                if (!speakingTime[speakerClean]) speakingTime[speakerClean] = 0;
+                speakingTime[speakerClean] += duration;
+
+                // Customer Timeline (Assuming Tabitha is the customer based on JSON)
+                if (speakerClean.includes("Tabitha") || speakerClean.toLowerCase().includes("customer")) {
+                    const intensityMap = { "Angry": -1, "Sad": -0.5, "Neutral": 0, "Happy": 1 };
+                    customerTimeline.push({
+                        x: seg.start_time,
+                        y: intensityMap[seg.emotion] || 0,
+                        label: seg.emotion
+                    });
                 }
-            }
-        });
 
-        // 4. Render Line Chart (Customer Emotion Journey)
-        const lineCtx = document.getElementById('emotionTimelineChart').getContext('2d');
-        new Chart(lineCtx, {
-            type: 'line',
-            data: {
-                labels: customerTimeline.map(t => t.x),
-                datasets: [{
-                    label: 'Emotion Shift',
-                    data: customerTimeline.map(t => t.y),
-                    borderColor: '#3b82f6',
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: customerTimeline.map(t => {
-                        if (t.label === 'Angry') return '#ef4444';
-                        if (t.label === 'Happy') return '#10b981';
-                        if (t.label === 'Neutral') return '#94a3b8';
-                        return '#f59e0b';
-                    }),
-                    pointRadius: 6,
-                    pointHoverRadius: 8
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        min: -1.2,
-                        max: 1.2,
-                        ticks: {
-                            color: '#94a3b8',
-                            callback: function(value) {
-                                if (value === -1) return 'Angry';
-                                if (value === 0) return 'Neutral';
-                                if (value === 1) return 'Happy';
-                                return '';
-                            }
-                        },
-                        grid: { color: 'rgba(255,255,255,0.05)' }
-                    },
-                    x: {
-                        ticks: { color: '#94a3b8' },
-                        grid: { color: 'rgba(255,255,255,0.05)' }
-                    }
+                // Heatmap Setup
+                if (!heatmapData[speakerClean]) heatmapData[speakerClean] = {};
+                if (!heatmapData[speakerClean][seg.emotion]) heatmapData[speakerClean][seg.emotion] = 0;
+                heatmapData[speakerClean][seg.emotion] += duration;
+                allEmotions.add(seg.emotion);
+            });
+
+            // 3. Render Pie Chart
+            const pieCtx = document.getElementById('speakingTimeChart').getContext('2d');
+            new Chart(pieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: Object.keys(speakingTime),
+                    datasets: [{
+                        data: Object.values(speakingTime),
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.8)', // Blue
+                            'rgba(16, 185, 129, 0.8)', // Green
+                            'rgba(245, 158, 11, 0.8)', // Amber
+                            'rgba(139, 92, 246, 0.8)'  // Purple
+                        ],
+                        borderColor: 'rgba(30, 33, 49, 1)',
+                        borderWidth: 2
+                    }]
                 },
-                plugins: {
-                    legend: { display: false },
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return customerTimeline[context.dataIndex].label;
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'right', labels: { color: '#e2e8f0' } }
+                    }
+                }
+            });
+
+            // 4. Render Line Chart (Customer Emotion Journey)
+            const lineCtx = document.getElementById('emotionTimelineChart').getContext('2d');
+            new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: customerTimeline.map(t => t.x),
+                    datasets: [{
+                        label: 'Emotion Shift',
+                        data: customerTimeline.map(t => t.y),
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        fill: true,
+                        tension: 0.4,
+                        pointBackgroundColor: customerTimeline.map(t => {
+                            if (t.label === 'Angry') return '#ef4444';
+                            if (t.label === 'Happy') return '#10b981';
+                            if (t.label === 'Neutral') return '#94a3b8';
+                            return '#f59e0b';
+                        }),
+                        pointRadius: 6,
+                        pointHoverRadius: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            min: -1.2,
+                            max: 1.2,
+                            ticks: {
+                                color: '#94a3b8',
+                                callback: function (value) {
+                                    if (value === -1) return 'Angry';
+                                    if (value === 0) return 'Neutral';
+                                    if (value === 1) return 'Happy';
+                                    return '';
+                                }
+                            },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        },
+                        x: {
+                            ticks: { color: '#94a3b8' },
+                            grid: { color: 'rgba(255,255,255,0.05)' }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return customerTimeline[context.dataIndex].label;
+                                }
                             }
                         }
                     }
                 }
-            }
-        });
-
-        // 5. Render Emotion Intensity Heatmap
-        renderHeatmap(heatmapData, Array.from(allEmotions).sort());
-    }
-
-    function renderHeatmap(data, emotions) {
-        const container = document.getElementById('heatmap-container');
-        
-        // Sort emotions properly to hardcode layout for better visualization
-        const fixedEmotions = ['Happy', 'Neutral', 'Sad', 'Angry']; // Force order
-        
-        let html = '<div class="heatmap-grid">';
-        
-        // Headers
-        html += '<div class="heatmap-header"></div>'; // Empty top-left
-        fixedEmotions.forEach(emo => {
-            html += `<div class="heatmap-header">${emo}</div>`;
-        });
-
-        // Find max duration to calculate color gradients
-        let maxDuration = 0;
-        Object.values(data).forEach(person => {
-            Object.values(person).forEach(dur => {
-                if (dur > maxDuration) maxDuration = dur;
             });
-        });
 
-        // Rows
-        Object.keys(data).forEach(speaker => {
-            html += `<div class="heatmap-label">${speaker}</div>`;
-            
+            // 5. Render Emotion Intensity Heatmap
+            renderHeatmap(heatmapData, Array.from(allEmotions).sort());
+        }
+
+        function renderHeatmap(data, emotions) {
+            const container = document.getElementById('heatmap-container');
+
+            // Sort emotions properly to hardcode layout for better visualization
+            const fixedEmotions = ['Happy', 'Neutral', 'Sad', 'Angry']; // Force order
+
+            let html = '<div class="heatmap-grid">';
+
+            // Headers
+            html += '<div class="heatmap-header"></div>'; // Empty top-left
             fixedEmotions.forEach(emo => {
-                const duration = data[speaker][emo] || 0;
-                
-                // Color calculation: Green -> Amber -> Red based on duration
-                let bgColor = 'rgba(255,255,255,0.05)';
-                let textColor = '#475569';
-                
-                if (duration > 0) {
-                    textColor = 'white';
-                    const intensity = duration / maxDuration;
-                    
-                    if (intensity < 0.33) {
-                        // Greenish
-                        const r = Math.round(16 + (intensity * 3 * 200)); 
-                        const g = 185; 
-                        const b = Math.round(129 - (intensity * 3 * 50)); 
-                        bgColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
-                    } else if (intensity < 0.66) {
-                        // Amber
-                        const t = (intensity - 0.33) * 3;
-                        const r = 245; 
-                        const g = Math.round(158 - (t * 80)); 
-                        const b = 11; 
-                        bgColor = `rgba(${r}, ${g}, ${b}, 0.9)`;
-                    } else {
-                        // Red
-                        const t = (intensity - 0.66) * 3;
-                        const r = 239; 
-                        const g = Math.round(68 - (t * 40)); 
-                        const b = Math.round(68 - (t * 40)); 
-                        bgColor = `rgba(${r}, ${g}, ${b}, 1)`;
-                    }
-                }
-
-                html += `<div class="heatmap-cell" style="background: ${bgColor}; color: ${textColor}">${duration > 0 ? duration + 's' : '-'}</div>`;
+                html += `<div class="heatmap-header">${emo}</div>`;
             });
-        });
 
-        html += '</div>';
-        container.innerHTML = html;
-    }
+            // Find max duration to calculate color gradients
+            let maxDuration = 0;
+            Object.values(data).forEach(person => {
+                Object.values(person).forEach(dur => {
+                    if (dur > maxDuration) maxDuration = dur;
+                });
+            });
 
-    // Initialize
-    loadData();
-</script>
+            // Rows
+            Object.keys(data).forEach(speaker => {
+                html += `<div class="heatmap-label">${speaker}</div>`;
+
+                fixedEmotions.forEach(emo => {
+                    const duration = data[speaker][emo] || 0;
+
+                    // Color calculation: Green -> Amber -> Red based on duration
+                    let bgColor = 'rgba(255,255,255,0.05)';
+                    let textColor = '#475569';
+
+                    if (duration > 0) {
+                        textColor = 'white';
+                        const intensity = duration / maxDuration;
+
+                        if (intensity < 0.33) {
+                            // Greenish
+                            const r = Math.round(16 + (intensity * 3 * 200));
+                            const g = 185;
+                            const b = Math.round(129 - (intensity * 3 * 50));
+                            bgColor = `rgba(${r}, ${g}, ${b}, 0.8)`;
+                        } else if (intensity < 0.66) {
+                            // Amber
+                            const t = (intensity - 0.33) * 3;
+                            const r = 245;
+                            const g = Math.round(158 - (t * 80));
+                            const b = 11;
+                            bgColor = `rgba(${r}, ${g}, ${b}, 0.9)`;
+                        } else {
+                            // Red
+                            const t = (intensity - 0.66) * 3;
+                            const r = 239;
+                            const g = Math.round(68 - (t * 40));
+                            const b = Math.round(68 - (t * 40));
+                            bgColor = `rgba(${r}, ${g}, ${b}, 1)`;
+                        }
+                    }
+
+                    html += `<div class="heatmap-cell" style="background: ${bgColor}; color: ${textColor}">${duration > 0 ? duration + 's' : '-'}</div>`;
+                });
+            });
+
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Initialize
+        loadData();
+    </script>
 
 </body>
+
 </html>

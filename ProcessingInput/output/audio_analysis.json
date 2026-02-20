@@ -1,147 +1,152 @@
 {
     "detailed_summary": {
-        "overall_summary": "This video contrasts two different customer service approaches\u2014represented by agents Claire and Candace\u2014handling the same frustrated customer, Tabitha Ratchet, who is missing a parcel. In the first scenario, Claire is dismissive, robotic, and eventually condescending, leading the customer to vow never to shop with the company again. In the second scenario, Candace uses empathy, explains company jargon, and validates the customer's concerns, resulting in a much more cooperative and calm resolution where the customer feels supported despite the shipping error.",
+        "overall_summary": "A customer calls the electricity office to complain about a power outage at his home that hasn't been fixed for 2-3 days, despite previous reports. The agent claims technicians visited the day before but left because no one answered the doorbell. The customer points out the logical fallacy: the electric doorbell doesn't work because there is no power. The call ends with the customer becoming verbally abusive towards the office staff.",
         "foul_language_used_anywhere": true,
-        "foul_language_details": "The customer, Tabitha Ratchet, used the word 'fucking' during the first call with Claire to express her frustration about being home all day."
+        "foul_language_details": "The customer used the Malayalam slur 'naayinte mone' (son of a dog/bitch) directed at the employees."
     },
     "agents_analysis": [
         {
-            "agent_name": "Claire",
-            "behavior": "Claire's behavior was dismissive and defensive. She failed to empathize with the customer's situation, spoke in a robotic tone, and became overtly condescending. She insulted the customer's intelligence and focused more on company policy than on solving the problem or calming the situation.",
-            "rating": "2/10. Claire's lack of emotional intelligence and rude attitude escalated a standard complaint into a lost customer and a potential brand reputation issue."
-        },
-        {
-            "agent_name": "Candace",
-            "behavior": "Candace displayed excellent customer service skills. She was empathetic from the start, validated Tabitha's frustration, and used 'we' language. She took the time to explain technical terms like 'PDNR' and 'dropship' to ensure the customer understood the internal process, which built trust.",
-            "rating": "9.5/10. Candace successfully de-escalated a difficult situation and maintained a positive professional image for the company."
+            "agent_name": "Electricity Office Agent",
+            "behavior": "The agent remained calm and professional in tone. However, he displayed a significant lack of practical logic by justifying the technician's failure to resolve the issue because the electric calling bell wasn't answered during a power outage.",
+            "rating": "4/10, because while he was polite, the reasoning provided for the service failure was incompetent and frustrated the customer further."
         }
     ],
     "customer_analysis": {
-        "customer_name": "Tabitha Ratchet",
-        "genuineness": "Highly genuine. Tabitha's frustration stems from a legitimate shipping error where a delivery was falsely marked as 'delivered' to a non-existent front porch.",
-        "behavior": "Tabitha starts both calls frustrated. With Claire, she becomes increasingly hostile and abusive in response to the agent's coldness. With Candace, she remains firm but becomes much more cooperative, showing that her behavior is heavily influenced by the quality of the service provided.",
-        "satisfaction_level": "Mixed. She ended the first call 'Very Dissatisfied' and angry. She ended the second call 'Satisfied' with the proposed resolution, even though the problem wasn't yet fully solved."
+        "customer_name": "Unnamed Resident",
+        "genuineness": "The customer's issue appears genuine as he provides specific location details (near the Anganwadi) and points out a very logical flaw in the agent's story.",
+        "behavior": "Initially frustrated and complaining, the customer becomes sarcastically angry when he realizes the technician tried to use an electric bell during an outage. He eventually loses his temper and uses foul language.",
+        "satisfaction_level": "Very Dissatisfied, as his power issue remains unresolved and he feels the service department is incompetent."
     },
     "segments": [
         {
-            "speaker": "Intro Narrator",
+            "speaker": "Customer",
             "start_time": "00:00",
-            "end_time": "00:20",
-            "language": "English",
+            "end_time": "00:01",
+            "language": "Malayalam",
             "emotion": "Neutral",
-            "text": "This is Claire and this is Candace, and today they're going to handle the same issue from the same customer, Tabitha Ratchet. The point of this video is to show the difference between bad and great customer service.",
+            "text": "Hello.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Claire (Agent)",
-            "start_time": "00:21",
-            "end_time": "00:26",
-            "language": "English",
+            "speaker": "Agent",
+            "start_time": "00:01",
+            "end_time": "00:02",
+            "language": "Malayalam",
             "emotion": "Neutral",
-            "text": "Thank you for calling Quest Shawn, this is Claire. How may I help you today?",
+            "text": "Hello, parayu.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Tabitha (Customer)",
-            "start_time": "00:27",
-            "end_time": "00:44",
-            "language": "English",
-            "emotion": "Angry",
-            "text": "I still have not received my order. You said I would receive it on the 20th, it's now the 22nd, still nothing. I don't know what's going on, but I would really, really love to get what I paid for.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Claire (Agent)",
-            "start_time": "00:45",
-            "end_time": "00:49",
-            "language": "English",
+            "speaker": "Customer",
+            "start_time": "00:02",
+            "end_time": "00:07",
+            "language": "Malayalam",
             "emotion": "Neutral",
-            "text": "Okay, may I have the order number and your first name?",
+            "text": "Ithu matte electrical... electricity office? Njan matte panchayathinte aduth oru anganwadi ille?",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Tabitha (Customer)",
-            "start_time": "01:45",
-            "end_time": "02:15",
-            "language": "English",
-            "emotion": "Angry",
-            "text": "What? You're kidding, right? First of all, my apartment has no front porch. Second, the only way to deliver parcels in our residence is by leaving them with the concierge. Third, I was at home the whole day on the 20th and no one knocked on my door.",
+            "speaker": "Agent",
+            "start_time": "00:07",
+            "end_time": "00:08",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Undu, manasilayi.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Tabitha (Customer)",
-            "start_time": "02:44",
-            "end_time": "02:59",
-            "language": "English",
+            "speaker": "Customer",
+            "start_time": "00:08",
+            "end_time": "00:22",
+            "language": "Malayalam",
+            "emotion": "Sad",
+            "text": "Aa anganwadite thotta veedanu. Njan oru randu moonu divasam munne vilichunnu. Veetil mathram current illa, bakki ellayidathum current undu. Athonnu vannu nokkan paranjittu ningal ithuvare vannillalo. Entha ithu?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Agent",
+            "start_time": "00:22",
+            "end_time": "00:24",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Ningal vilichu paranjittundayirunnu, randu divasam munne.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Customer",
+            "start_time": "00:24",
+            "end_time": "00:25",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Aa, paranjundayirunnu.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Agent",
+            "start_time": "00:25",
+            "end_time": "00:28",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Ennittu innalle vannirunnalo avide.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Customer",
+            "start_time": "00:28",
+            "end_time": "00:31",
+            "language": "Malayalam",
             "emotion": "Angry",
-            "text": "You're not listening to me. I told you I was in the apartment the entire fucking day! If someone delivered a parcel, the concierge would have received it by now.",
+            "text": "Innale aaru vannu? Current illa ippozhum veettilo!",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Agent",
+            "start_time": "00:31",
+            "end_time": "00:35",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Innale vannittu ippo orupaadu thavana calling bell adichu. Pakshe ningal aarum purathu vannilla.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Customer",
+            "start_time": "00:35",
+            "end_time": "00:41",
+            "language": "Malayalam",
+            "emotion": "Angry",
+            "text": "Aa... bell adichittu karyamilla. Bell work cheyyilla. Current ille? Current undayirunnalle bell work cheyyullu!",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Agent",
+            "start_time": "00:41",
+            "end_time": "00:42",
+            "language": "Malayalam",
+            "emotion": "Neutral",
+            "text": "Aa, current illa avide.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Customer",
+            "start_time": "00:42",
+            "end_time": "00:50",
+            "language": "Malayalam",
+            "emotion": "Angry",
+            "text": "Ippo current illa ennu paranjittu thanne alle ningale vilichu varuthiyathu? Ningal ethu naayinte mone aanu pani eduthe... thenga!",
             "used_foul_language": true,
-            "foul_language_detected": "fucking"
-        },
-        {
-            "speaker": "Claire (Agent)",
-            "start_time": "05:00",
-            "end_time": "05:04",
-            "language": "English",
-            "emotion": "Neutral",
-            "text": "Okay, so how would you like to proceed?",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Tabitha (Customer)",
-            "start_time": "06:50",
-            "end_time": "07:12",
-            "language": "English",
-            "emotion": "Angry",
-            "text": "Just stop, okay? Just stop. I don't care anymore. I hope your company goes bankrupt and no company ever hires you again. Your attitude has been pretty disgusting and condescending.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Candace (Agent)",
-            "start_time": "07:34",
-            "end_time": "07:42",
-            "language": "English",
-            "emotion": "Neutral",
-            "text": "Thank you for calling Quest Shawn, this is Candace. How may I help you?",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Candace (Agent)",
-            "start_time": "07:56",
-            "end_time": "08:05",
-            "language": "English",
-            "emotion": "Neutral",
-            "text": "Oh, if it's beyond the promised delivery date, we definitely need to look into that. May I have your order number and your full name?",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Candace (Agent)",
-            "start_time": "11:00",
-            "end_time": "11:23",
-            "language": "English",
-            "emotion": "Neutral",
-            "text": "Yes, that makes sense. So here's what we're going to do, Tabitha. It is likely that FedEx delivered the order to the wrong address, so I will file a PDNR claim on your behalf.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Tabitha (Customer)",
-            "start_time": "13:00",
-            "end_time": "13:09",
-            "language": "English",
-            "emotion": "Happy",
-            "text": "All right, Candace. Thank you so much, that's all I need for now. I have to go, bye.",
-            "used_foul_language": false,
-            "foul_language_detected": null
+            "foul_language_detected": "naayinte mone"
         }
     ]
 }

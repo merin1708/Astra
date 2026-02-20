@@ -1,0 +1,22 @@
+{
+    "file_name": "WhatsApp Audio 2026-02-20 at 11.47.03 PM.mp3",
+    "detailed_summary": {
+        "overall_summary": "A customer calls the electricity office to report that his house has been without power for 2-3 days despite reporting it previously. The agent informs him that a technician visited the previous day and rang the doorbell multiple times, but no one answered. The customer mockingly points out the logic flaw\u2014that the doorbell requires electricity to function. The conversation ends with the customer hurling an insult at the agency's hiring choices.",
+        "foul_language_used_anywhere": true,
+        "foul_language_details": "The customer used the Malayalam insult 'nayinte mone' (son of a dog/bitch) toward the end of the call."
+    },
+    "agents_analysis": [
+        {
+            "agent_name": "Electricity Office Agent",
+            "behavior": "The agent was calm and professional in tone, but demonstrated a lack of critical thinking by suggesting that a technician attempted to signal the homeowner via an electric doorbell during a power outage.",
+            "rating": "4/10. While the agent was not rude, the explanation provided was logically flawed, which further provoked the customer.",
+            "foul_language_used": false
+        }
+    ],
+    "customer_analysis": {
+        "customer_name": "Unknown Homeowner",
+        "genuineness": "The customer's issue seems genuine as he provides specific location details (near the anganwadi) and a valid reason for the technician's failure to contact him.",
+        "behavior": "The customer started the call reasonably but became increasingly frustrated and sarcastic when he realized the technician's mistake. He eventually became verbally abusive.",
+        "satisfaction_level": "Extremely Dissatisfied; the power issue remains unresolved and the customer feels the service provider is incompetent."
+    }
+}
