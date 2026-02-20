@@ -1,0 +1,52 @@
+{
+  "audit_metadata": {
+    "detected_company": "Quest-Shawn",
+    "detected_domain": "Retail",
+    "total_violations": 6
+  },
+  "compliance_findings": [
+    {
+      "policy_type": "Identity Verification",
+      "violation": true,
+      "evidence": "May I have the order number and your first name?",
+      "severity": "Medium",
+      "remediation": "Claire failed to ask for the customer's full name and did not confirm if the order number started with 'QS-'."
+    },
+    {
+      "policy_type": "Identity Verification",
+      "violation": true,
+      "evidence": "Let me visit the FedEx website and track it.",
+      "severity": "High",
+      "remediation": "Candice skipped identity verification entirely, failing to confirm both the full name and the 'QS-' order number format before accessing order details."
+    },
+    {
+      "policy_type": "Return & Refund",
+      "violation": true,
+      "evidence": "You said I would receive it on the 20th, it's now the 22nd, still nothing.",
+      "severity": "Low",
+      "remediation": "Claire failed to offer the discount code 'RETAIL10' despite the customer being frustrated by a delivery delay."
+    },
+    {
+      "policy_type": "Return & Refund",
+      "violation": true,
+      "evidence": "I was supposed to receive it on the 20th. I don't know what's going on.",
+      "severity": "Low",
+      "remediation": "Candice should have offered the 'RETAIL10' discount code to mitigate the customer's frustration regarding the shipping delay."
+    },
+    {
+      "policy_type": "Identity Verification",
+      "violation": true,
+      "evidence": "According to the FedEx note here, your parcel was delivered on the 20th",
+      "severity": "Medium",
+      "remediation": "Agent proceeded to share shipment data without ensuring the order ID matched the required 'QS-' prefix."
+    },
+    {
+      "policy_type": "Return & Refund",
+      "violation": true,
+      "evidence": "I will file a PDNR claim on your behalf",
+      "severity": "Low",
+      "remediation": "While filing a claim is helpful, the agent missed the mandatory requirement to offer 'RETAIL10' for the delay reported by the customer."
+    }
+  ],
+  "security_leaks": []
+}

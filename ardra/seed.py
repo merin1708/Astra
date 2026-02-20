@@ -92,9 +92,39 @@ def seed_database():
                 "Agent must mention the 'Contract Buyout' program if customer is switching providers"
             ]))
         ])
+        # --- 5. QUEST-SHAWN (Retail) ---
+        retail = Company(name="Quest-Shawn", domain="Retail")
+        session.add(retail)
+        session.commit()
+        session.refresh(retail)
+
+        session.add_all([
+            Product(company_id=retail.id, product_name="Q-S Horizon Laptop", description="Premium 14-inch professional laptop."),
+            # FIX: Change 'name' to 'product_name' below
+            Product(product_name="Aura Headphones", company_id=retail.id, description="Noise-cancelling over-ear headphones."),
+            Product(product_name="Quest-Shawn Signature Parka", company_id=retail.id, description="Water-resistant winter apparel.")
+        ])
+
+        session.add_all([
+            Policy(company_id=retail.id, policy_type="Identity Verification", rules_json=json.dumps([
+                "Agent must verify the customer's full name",
+                "Agent must confirm the order number (starts with 'QS-')",
+                "Agent must NOT ask for the full credit card number, only the last 4 digits"
+            ])),
+            Policy(company_id=retail.id, policy_type="Return & Refund", rules_json=json.dumps([
+                "Items must be returned within 30 days of the delivery date",
+                "If a customer reports a damaged item, agent must offer a free replacement",
+                "If a customer is frustrated by a delay, offer discount code 'RETAIL10'"
+            ])),
+            Policy(company_id=retail.id, policy_type="Security & Secrets", rules_json=json.dumps([
+                "Agent must never share internal warehouse locations",
+                "Agent must not share employee personal phone numbers",
+                "If fraud is suspected, agent must escalate to 'Internal Security Team' without alerting customer"
+            ]))
+        ])
 
         session.commit()
-        print("Successfully seeded 4 companies with unique policies!")
+        print("Successfully seeded 5 companies with unique policies!")
 
 if __name__ == "__main__":
     seed_database()
