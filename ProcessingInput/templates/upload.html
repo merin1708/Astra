@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio & Text Analysis Upload</title>
+    <style>
+        :root {
+            --bg-dark: #0f111a;
+            --card-bg: rgba(30, 33, 49, 0.7);
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            margin: 0;
+            padding: 2rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(16, 185, 129, 0.15), transparent 25%);
+        }
+
+        .upload-container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .drop-zone {
+            margin: 2rem 0;
+            padding: 3rem 1rem;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .drop-zone.dragover {
+            border-color: var(--accent);
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        .drop-zone:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .text-input-area {
+            width: 100%;
+            margin-top: 1rem;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            color: var(--text-main);
+            font-family: inherit;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1.5rem;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: var(--accent-hover);
+        }
+
+        button:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            color: #94a3b8;
+        }
+
+        .loader-container {
+            display: none;
+            margin-top: 1.5rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .or-divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .or-divider::before,
+        .or-divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .or-divider span {
+            padding: 0 10px;
+        }
+
+        #file-name-display {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #34d399;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="upload-container">
+        <h1>Conversation Insight Engine</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Upload an audio file (.mp3) or paste a text transcript
+            to generate a deep-dive behavioral dashboard.</p>
+
+        <div class="drop-zone" id="drop-zone">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 1rem;">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+            </svg>
+            <div style="font-size: 1.1rem;">Drag & drop your file here</div>
+            <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">Supports MP3, WAV, TXT up to
+                20MB</div>
+            <input type="file" id="file-input" style="display: none;" accept=".mp3,.wav,.txt,.m4a">
+        </div>
+
+        <div id="file-name-display"></div>
+
+        <div class="or-divider"><span>OR</span></div>
+
+        <div class="text-input-area">
+            <textarea id="raw-text-input"
+                placeholder="Paste your raw chat log or transcript here directly..."></textarea>
+        </div>
+
+        <button id="analyze-btn">Generate Dashboard</button>
+
+        <div class="loader-container" id="loader">
+            <div class="spinner"></div>
+            <p id="loader-text" style="color: var(--text-muted); margin-top: 1rem;">Analyzing psychology, behavior, and
+                tone... (This takes up to 60s)</p>
+        </div>
+    </div>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const analyzeBtn = document.getElementById('analyze-btn');
+        const rawTextInput = document.getElementById('raw-text-input');
+        const loader = document.getElementById('loader');
+        const fileNameDisplay = document.getElementById('file-name-display');
+
+        let selectedFile = null;
+
+        // Drag and drop handlers
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            if (e.dataTransfer.files.length) {
+                handleFileSelect(e.dataTransfer.files[0]);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length) {
+                handleFileSelect(e.target.files[0]);
+            }
+        });
+
+        function handleFileSelect(file) {
+            selectedFile = file;
+            fileNameDisplay.innerText = `Selected: ${file.name}`;
+            rawTextInput.value = ''; // Clear text if file selected
+        }
+
+        rawTextInput.addEventListener('input', () => {
+            if (rawTextInput.value.trim().length > 0) {
+                selectedFile = null;
+                fileNameDisplay.innerText = '';
+            }
+        });
+
+        // Upload Logic
+        analyzeBtn.addEventListener('click', async () => {
+            const textValue = rawTextInput.value.trim();
+
+            if (!selectedFile && !textValue) {
+                alert('Please select a file or paste text first.');
+                return;
+            }
+
+            // UI updates for loading
+            analyzeBtn.style.display = 'none';
+            loader.style.display = 'block';
+            dropZone.style.pointerEvents = 'none';
+            dropZone.style.opacity = '0.5';
+
+            const formData = new FormData();
+
+            if (selectedFile) {
+                formData.append('file', selectedFile);
+            } else {
+                formData.append('text_data', textValue);
+            }
+
+            try {
+                const response = await fetch('/api/analyze', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Instantly redirect to dashboard page upon success
+                    window.location.href = '/dashboard';
+                } else {
+                    alert(`Error: ${result.error || 'Generative AI failed'}`);
+                    resetUI();
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Could not connect to the server.');
+                resetUI();
+            }
+        });
+
+        function resetUI() {
+            analyzeBtn.style.display = 'block';
+            loader.style.display = 'none';
+            dropZone.style.pointerEvents = 'auto';
+            dropZone.style.opacity = '1';
+        }
+    </script>
+
+</body>
+
+</html>

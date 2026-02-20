@@ -1,0 +1,75 @@
+import os
+import json
+from google import genai
+from google.genai import types
+
+def analyze_audio(file_path: str):
+    # Ensure API key is set
+    if not os.environ.get("GEMINI_API_KEY"):
+        print("Error: GEMINI_API_KEY environment variable not set.")
+        print("Please set it using: set GEMINI_API_KEY=your_actual_api_key")
+        return
+
+    print("Initializing Gemini Client...")
+    client = genai.Client()
+    
+    # Upload the file
+    print(f"Uploading '{file_path}' to Google Gemini API...")
+    try:
+        audio_file = client.files.upload(file=file_path)
+        print(f"Successfully uploaded! File URI: {audio_file.uri}")
+    except Exception as e:
+        print(f"Failed to upload the file: {e}")
+        return
+
+    prompt = """
+    Listen to this audio. 
+    1. Identify distinct speakers (e.g., Speaker A, Speaker B). 
+    2. Provide accurate timestamps for each segment. 
+    3. Detect the primary language. 
+    4. Identify the primary emotion (Happy, Sad, Angry, Neutral) of the speaker in this segment. 
+    
+    Return all of this as a structured JSON object. 
+    The JSON should have a key 'segments' containing a list of objects.
+    Each object should have keys: 'speaker', 'start_time', 'end_time', 'language', 'emotion', 'text' (optional transcription of what they said).
+    """
+
+    print("Requesting analysis from the model (this may take a few moments)...")
+    try:
+        response = client.models.generate_content(
+            model='gemini-3-flash-preview',
+            contents=[
+                audio_file,
+                prompt
+            ],
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+            ),
+        )
+        print("\n--- Analysis Result ---")
+        print(response.text)
+        
+        try:
+            parsed_json = json.loads(response.text)
+            output_file = 'audio_analysis.json'
+            with open(output_file, 'w', encoding='utf-8') as f:
+                json.dump(parsed_json, f, indent=4)
+            print(f"\nSuccessfully saved the JSON result to '{output_file}'")
+        except json.JSONDecodeError:
+            print("\nWarning: The output might not be strictly valid JSON, could not save to file.")
+
+    except Exception as e:
+         print(f"An error occurred during content generation: {e}")
+    finally:
+         # Clean up the uploaded file
+         print(f"\nCleaning up: Deleting file from Gemini API storage...")
+         client.files.delete(name=audio_file.name)
+         print("Cleanup complete.")
+
+if __name__ == "__main__":
+    audio_file_path = "audio_file.mp3"
+    if os.path.exists(audio_file_path):
+        analyze_audio(audio_file_path)
+    else:
+        print(f"File not found: {audio_file_path}")
+        print("Please make sure the file is in the same directory as this script.")

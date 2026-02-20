@@ -1,0 +1,284 @@
+{
+    "segments": [
+        {
+            "speaker": "Speaker A",
+            "start_time": 0.0,
+            "end_time": 20.2,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "This is Claire and this is Candice, and today they're going to handle the same issue from the same customer, Tabitha Ratched. The point of this video is to show you the difference between bad and great customer service."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 20.2,
+            "end_time": 26.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you for calling Quest-Shawn, this is Claire. How may I help you today?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 26.5,
+            "end_time": 41.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I still have not received my order. You said I would receive it on the 20th, it's now the 22nd, still nothing. I don't know what's going on, but I would really love to get what I paid for."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 41.5,
+            "end_time": 47.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay. May I have the order number and your first name?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 47.5,
+            "end_time": 53.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "498-4977, Tabitha Ratched."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 53.5,
+            "end_time": 57.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you. Let me just check that here."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 57.5,
+            "end_time": 105.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I mean it's ridiculous. If there's a delay, you could just tell me. You didn't notify me at all. If I forgot that I ordered it, I'd completely be paying for nothing."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 105.5,
+            "after_time": 115.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "One moment please while I check your order status. I am listening, that's why I'm going to check the status for you, okay?"
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 134.5,
+            "end_time": 141.2,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, according to the FedEx note here, your parcel was delivered on the 20th at 10:00 AM and it was left on the front porch according to the notes."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 141.2,
+            "end_time": 213.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "What? You're kidding, right? First of all, my apartment has no front porch. Second, the only way to deliver parcels is to leave them with the concierge. Third, I was at home the whole day on the 20th."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 213.5,
+            "end_time": 222.8,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Have you tried checking with the building's concierge to see if they've kept a package for you? Or your neighbors?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 222.8,
+            "end_time": 310.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Are you saying my neighbors stole my parcel? You're not listening to me! I told you I was in the apartment the entire fucking day!"
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 310.5,
+            "end_time": 318.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Tabitha, I'm just doing my job. This is standard protocol. We have to make sure the receiver has checked all the possible places."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 318.5,
+            "end_time": 330.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "But do your job right! You're not even trying! All you're doing is asking me dumb questions!"
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 330.5,
+            "end_time": 443.2,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Please calm down, Tabitha. For us to resolve this, I will send you an email. Please reply to that email to confirm in writing that you did not receive the parcel. After that, I'm going to file a claim with FedEx."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 443.2,
+            "end_time": 506.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I could just file a dispute and get my money back! You have the emotional intelligence of a peanut!"
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 506.5,
+            "end_time": 638.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I wouldn't recommend that as it might poorly reflect on your credit score. Once a claim is filed, we will investigate and it will take around seven business days. We can refund, replace, or find your missing parcel."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 638.5,
+            "end_time": 647.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I tried to be nice to you guys but it seems like you left me no other choice. I will file a dispute and never shop from your site again."
+        },
+        {
+            "speaker": "Speaker B",
+            "start_time": 647.5,
+            "end_time": 712.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "As much as I'd like to help you, this is the best I can do. If that is too long for you to wait, I suggest you place another order with a different shipping address while the investigation is ongoing."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 712.5,
+            "end_time": 734.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Just stop, okay? I hope your company goes bankrupt and no company ever hires you again. Your attitude has been disgusting. Bye-bye."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 735.0,
+            "end_time": 742.5,
+            "language": "English",
+            "emotion": "Happy",
+            "text": "Thank you for calling Quest-Shawn, this is Candice. How may I help you?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 742.5,
+            "end_time": 801.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I still have not received my order. You said I would receive it on the 20th, it's now the 22nd. I don't know what's going on, I would really love to get what I paid for."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 801.5,
+            "end_time": 809.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Oh, if it's beyond the promised delivery date, we definitely need to look into that. May I have your order number and full name?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 809.5,
+            "end_time": 827.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "The order number is 498-4977 and my name is Tabitha Ratched."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 827.5,
+            "end_time": 901.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay Tabitha, let me pull up your order. The estimated delivery date was the 20th... normally when a parcel is late like this we send an email. Let me visit the FedEx website and track it."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 901.5,
+            "end_time": 913.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "According to the FedEx note, your parcel was delivered on the 20th at 10:00 AM. It says it was left on the front porch. Have you checked?"
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 913.5,
+            "end_time": 1007.5,
+            "language": "English",
+            "emotion": "Angry",
+            "text": "My apartment has no front porch. The only way to deliver is through the concierge. I was at home all day and no one knocked. Whatever this FedEx guy is saying, he's lying."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 1007.5,
+            "end_time": 1108.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "That definitely makes sense. It is likely FedEx delivered the order to the wrong address. I will file a PDNR claim\u2014Parcel Delivered Not Received\u2014on your behalf. I'll send an email right now, please reply to it so we have documentation."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 1108.5,
+            "end_time": 1112.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Whatever happens, I'm going to get my refund, right?"
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 1112.5,
+            "end_time": 1202.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Of course. In the event it isn't recovered, would you prefer a replacement or a refund? I'll make note that you'd prefer a replacement. After the investigation, which takes 5-7 days, we can process that for you."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 1202.5,
+            "end_time": 1212.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "It's disappointing this has to happen, but okay. At least I don't have to file a dispute."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 1212.5,
+            "end_time": 1246.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yes, this is definitely not the experience we want you to have. I will keep this case in progress and update you throughout the process. Just reply to the same email thread if you have questions."
+        },
+        {
+            "speaker": "Speaker C",
+            "start_time": 1246.5,
+            "end_time": 1301.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "All right Candice, thank you so much. I'll reply in five minutes during my lunch break. Bye."
+        },
+        {
+            "speaker": "Speaker D",
+            "start_time": 1301.5,
+            "end_time": 1310.5,
+            "language": "English",
+            "emotion": "Happy",
+            "text": "Enjoy your lunch Tabitha. Thank you for calling Quest-Shawn. Bye."
+        },
+        {
+            "speaker": "Speaker A",
+            "start_time": 1310.5,
+            "end_time": 1338.5,
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "As you can see, this video is purely mock calls. If you want detailed explanations of all the things Claire did wrong and Candice did right, head over to the next video. Thank you for watching!"
+        }
+    ]
+}

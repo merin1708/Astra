@@ -1,0 +1,25 @@
+{
+    "detailed_summary": {
+        "overall_summary": "This video contrasts two different customer service approaches\u2014represented by agents Claire and Candace\u2014handling the same frustrated customer, Tabitha Ratchet, who is missing a parcel. In the first scenario, Claire is dismissive, robotic, and eventually condescending, leading the customer to vow never to shop with the company again. In the second scenario, Candace uses empathy, explains company jargon, and validates the customer's concerns, resulting in a much more cooperative and calm resolution where the customer feels supported despite the shipping error.",
+        "foul_language_used_anywhere": true,
+        "foul_language_details": "The customer, Tabitha Ratchet, used the word 'fucking' during the first call with Claire to express her frustration about being home all day."
+    },
+    "agents_analysis": [
+        {
+            "agent_name": "Claire",
+            "behavior": "Claire's behavior was dismissive and defensive. She failed to empathize with the customer's situation, spoke in a robotic tone, and became overtly condescending. She insulted the customer's intelligence and focused more on company policy than on solving the problem or calming the situation.",
+            "rating": "2/10. Claire's lack of emotional intelligence and rude attitude escalated a standard complaint into a lost customer and a potential brand reputation issue."
+        },
+        {
+            "agent_name": "Candace",
+            "behavior": "Candace displayed excellent customer service skills. She was empathetic from the start, validated Tabitha's frustration, and used 'we' language. She took the time to explain technical terms like 'PDNR' and 'dropship' to ensure the customer understood the internal process, which built trust.",
+            "rating": "9.5/10. Candace successfully de-escalated a difficult situation and maintained a positive professional image for the company."
+        }
+    ],
+    "customer_analysis": {
+        "customer_name": "Tabitha Ratchet",
+        "genuineness": "Highly genuine. Tabitha's frustration stems from a legitimate shipping error where a delivery was falsely marked as 'delivered' to a non-existent front porch.",
+        "behavior": "Tabitha starts both calls frustrated. With Claire, she becomes increasingly hostile and abusive in response to the agent's coldness. With Candace, she remains firm but becomes much more cooperative, showing that her behavior is heavily influenced by the quality of the service provided.",
+        "satisfaction_level": "Mixed. She ended the first call 'Very Dissatisfied' and angry. She ended the second call 'Satisfied' with the proposed resolution, even though the problem wasn't yet fully solved."
+    }
+}
