@@ -1,8 +1,10 @@
 from sqlmodel import Session
-from database import Company, Product, Policy, engine
+from database import engine, create_db_and_tables  
+from database import Company, Product, Policy
 import json
 
 def seed_database():
+    create_db_and_tables()
     with Session(engine) as session:
         # --- 1. GLOBAL TRUST BANK (Traditional Banking) ---
         bank = Company(name="Global Trust Bank", domain="Banking")
