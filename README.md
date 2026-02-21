@@ -28,6 +28,48 @@ It ensures that agents follow mandatory procedures (like verifying IDs) and neve
 ## Architecture
 The NexaTalk system operates on a multi-stage, AI-driven pipeline:
 
+'''mermaid
+graph TD
+    %% Stage 1: Ingestion
+    subgraph Layer_1 [Layer 1: ProcessingInput]
+    A[Audio/Transcript File] --> B[Flask app.py]
+    B -->|STT / Diarization / Emotion| C[main_output.json]
+    end
+
+    %% Stage 2: Intelligence Controller
+    subgraph Layer_2 [Layer 2: Ardra Intelligence]
+    C -->|Auto-Trigger| D[automated_pipeline.py]
+    D --> E[domain_router.py]
+    
+    %% Stage 3: Knowledge Retrieval
+    subgraph Layer_3 [Layer 3: SQL Contextual Grounding]
+    E -->|Lookup| F[(transight_intelligence.db)]
+    F --- G[Company Table]
+    F --- H[Product Table]
+    F --- I[Policy Table]
+    I -->|Fetch rules_json| J[Structured Policy Context]
+    end
+
+    %% Stage 4: Audit Engine
+    E -->|Context Injection| K[Gemini 2.0 Audit Engine]
+    J -->|Dynamic Grounding| K
+    
+    K --> L{Semantic Dual-Gate Audit}
+    L -->|Gate 1| M[SOP Compliance]
+    L -->|Gate 2| N[Security & Secrets]
+    end
+
+    %% Stage 5: Output & UI
+    M & N --> O[audit_results.json]
+    O --> P[Interactive UI Dashboard]
+
+    %% Styling for visual appeal
+    style B fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#00d2ff,stroke:#333,stroke-width:4px
+    style F fill:#fff,stroke:#333,stroke-dasharray: 5 5
+    style K fill:#9f9,stroke:#333,stroke-width:2px
+    style L fill:#ffcc00,stroke:#333,stroke-width:2px
+
 1. **Ingestion & Pre-processing (`ProcessingInput`)**:
    - A Flask application (`app.py`) accepts audio files or text transcripts.
    - It performs initial speech-to-text, speaker diarization, and emotion classification, outputting a structured, timestamped array of dialogue (`main_output.json`).
