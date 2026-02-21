@@ -1,47 +1,109 @@
-# 🎙️ OmniContext API: Agentic AI Conversation Intelligence
+# NexaTalk (Project Astra)
 
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg) ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-009688.svg) ![Gemini](https://img.shields.io/badge/AI-Google_Gemini_1.5-orange.svg) ![Status](https://img.shields.io/badge/Status-Enterprise_Ready-success.svg)
+**Brief description**: NexaTalk is an enterprise-grade AI auditing ecosystem designed to detect policy violations, analyze agent performance, and prevent sensitive data leaks in customer service interactions using Gemini 3.0 Flash.
 
-> **Transight Hackathon Submission** > A decoupled, zero-downtime backend API that bypasses legacy speech-to-text pipelines by feeding raw audio directly into a Multimodal LLM to extract highly structured, business-critical insights and drive real-time AI Fraud & Scam Detection.
+## Table of Contents
+- [About](#about)
+- [Key Features](#key-features)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Installation & Setup](#installation--setup)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-## 🚀 The Vision
+## About
+NexaTalk solves the "Semantic Gap" in corporate compliance auditing. While traditional QA tools rely on rigid keyword matching, NexaTalk understands the semantic intent of conversations. It cross-references live call transcripts and chat logs against a library of specific company rules and Standard Operating Procedures (SOPs) stored in a RAG-enabled database. 
 
-Traditional customer support pipelines rely on fragile NLP steps (Speech-to-Text → Translation → Sentiment). This loses the acoustic reality of the call—the tone, the pauses, and the panic. 
+It ensures that agents follow mandatory procedures (like verifying IDs) and never disclose sensitive internal data (like dropship warehouse statuses, private IPs, or security codes).
 
-**OmniContext API** is an Agentic, RAG-augmented Multimodal Pipeline. It ingests raw audio and a dynamic "Client Context" JSON, allowing the AI to instantly adapt its analysis to the enterprise's specific business rules (e.g., Telecom Billing vs. Banking Fraud Detection) in a single, lightning-fast pass. 
+## Key Features
+- **Semantic Dual-Gate Auditing**: Simultaneously verifies *SOP Compliance* (did they follow rules?) and *Data Security* (did they leak secrets?).
+- **Dynamic Context Routing**: Automatically detects the Business Domain (e.g., Retail, Banking) and Company Name directly from the dialogue to load the correct rulebook.
+- **Rules-as-Code Database**: Employs an intelligent SQL/Vector RAG database to map dynamic, company-specific policies into active prompt configurations.
+- **Emotion & Sentiment Analysis**: Detects customer emotions segment-by-segment to track de-escalation efficiency and flag unprofessional agent conduct or foul language.
+- **Automated RCA**: Generates actionable RCA (Root Cause Analysis) insights and JSON reports containing precise evidence quotes and severity scores.
 
----
+## Architecture
+The NexaTalk system operates on a multi-stage, AI-driven pipeline:
 
-## ✨ Enterprise-Grade Features
+1. **Ingestion & Pre-processing (`ProcessingInput`)**:
+   - A Flask application (`app.py`) accepts audio files or text transcripts.
+   - It performs initial speech-to-text, speaker diarization, and emotion classification, outputting a structured, timestamped array of dialogue (`main_output.json`).
 
-* **Native Multimodal Processing:** No Whisper. No Pyannote. The system natively comprehends audio files and code-switched languages (e.g., Manglish) in a single API call.
-* **AI Fraud & Scam Detection:** Actively shields vulnerable demographics. By passing dynamic fraud rules into the multimodal pipeline, the system instantly catches real-time scam attempts, social engineering tactics, or unauthorized OTP requests.
-* **Zero-Downtime Configuration:** API keys and business rules are injected on a strictly *per-request* basis. Enterprises can rotate compromised keys or update compliance rules without rebooting the live server.
-* **Dynamic Rule Retrieval (Schema Injection):** The client dictates the output. Pass `["competitor_mentions", "foul_language"]` in the request payload, and the AI dynamically tracks those exact metrics.
-* **Rate-Limit Immunity:** Built-in network fault tolerance. If the LLM API throttles the connection, the backend intercepts the crash and dynamically generates a fallback JSON report rather than dropping the HTTP request.
-* **Self-Healing Output Auditor:** LLMs hallucinate; our API does not. An internal middleware sanitizes the LLM output, strips rogue markdown blocks, and guarantees 100% strict JSON compliance.
+2. **The Intelligence Controller (`ardra/automated_pipeline.py`)**:
+   - Acts as the central nervous system, automatically triggering the audit phase once data is processed.
 
----
+3. **Dynamic Domain Routing (`ardra/domain_router.py`)**:
+   - Uses Gemini to semantically analyze the isolated transcript to identify the active Company and Sector.
 
-## 🏗️ Technical Architecture
+4. **Policy Retrieval (SQL RAG)**:
+   - Queries the `database.db` via SQLModel, extracting localized Standard Operating Procedures and Security rules.
 
-This backend is built for speed, resilience, and horizontal scaling.
+5. **The Semantic Dual-Gate Audit**:
+   - Injects both the isolated transcript and specific retrieved policies into a sophisticated auditing LLM prompt.
+   - Outputs highly detailed findings indicating missed procedures or leaked company secrets.
 
-1. **Routing Layer (FastAPI):** Handles robust data validation (Pydantic), asynchronous request management, and automated OpenAPI documentation.
-2. **AI Service Engine (Google GenAI SDK):** Wraps the multimodal prompt, combining the raw audio stream with the injected client business policies.
-3. **Data Persistence (Flat-File NoSQL):** To maximize speed and avoid DB connection overhead during the hackathon, state is managed via an atomic, file-by-file JSON caching system. 
+## Tech Stack
+- **Core Orchestration**: Python 3.11, FastAPI, Flask
+- **LLM Engine**: Google Gemini 3.0 Flash Preview (Google GenAI SDK)
+- **Database (Policies & RAG)**: SQLite + SQLModel
+- **Audio Processing**: WhisperX, pyannote-audio, Hugging Face
+- **Frontend Visualization**: Custom HTML5, Vanilla JavaScript, Chart.js, Tailwind/Custom CSS
 
-### 🧠 AI Usage Approach & Configuration Mechanism
-We treat the client's JSON configuration as dynamic context. When the API receives a request, it parses the client's specific `risk_triggers` and `policies` and injects them into the master prompt as system instructions. The Multimodal API evaluates the conversation exclusively through the lens of those injected rules.
+## Installation & Setup
 
----
+### Prerequisites
+- Python 3.11+
+- Google Gemini API Key
+- Supported libraries (see `requirements.txt`)
 
-## ⚙️ Quick Start
+### Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/merin1708/Astra.git
+   ```
+2. **Setup the Core Services:**
+   Navigate to the intelligence engine directory:
+   ```bash
+   cd Astra/ardra
+   pip install google-genai sqlmodel pypdf chromadb fastapi uvicorn
+   ```
+3. **Seed the Database:**
+   Populate the SQLite policy database with the mock company rules:
+   ```bash
+   python seed.py
+   ```
+4. **Setup the Input Processor:**
+   ```bash
+   cd ../ProcessingInput
+   pip install flask werkzeug
+   ```
 
-### 1. Clone & Install
+## Usage
+
+You can run the full ecosystem from the root processing application:
+
 ```bash
-git clone [https://github.com/yourusername/omnicontext-api.git](https://github.com/yourusername/omnicontext-api.git)
-cd omnicontext-api
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install fastapi uvicorn python-multipart pydantic google-generativeai python-dotenv
+cd Astra/ProcessingInput
+python app.py
+```
+- Open `http://127.0.0.1:8000` in your web browser.
+- Upload an audio file or paste a text transcript.
+- The pipeline will automatically transcribe, detect the company, evaluate compliance against SQL rules, and output a detailed dashboard analysis alongside `.json` reports in the `output/` directory.
+
+Alternatively, to run just the audit controller on existing transcripts:
+```bash
+cd Astra/ardra
+python automated_pipeline.py
+```
+
+## Contributing
+Contributions are welcome. Please open an issue or submit a pull request for improvements to the prompt pipeline, UI features, or RAG models.
+
+## License
+[MIT License](LICENSE)
+
+## Contact
+Team Astra Project Link: [https://github.com/merin1708/Astra](https://github.com/merin1708/Astra)
