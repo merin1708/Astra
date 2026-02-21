@@ -6,7 +6,7 @@ from src.config import Config
 class GeminiService:
     def __init__(self):
         Config.validate()
-        self.client = genai.Client(api_key=Config.GEMINI_API_KEY)
+        self.client = genai.Client(api_key=Config.get_api_key())
         self.model_name = Config.MODEL_NAME
 
     def analyze_audio(self, file_path: str):

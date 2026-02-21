@@ -1,152 +1,859 @@
 {
     "detailed_summary": {
-        "overall_summary": "A customer calls the electricity office to complain about a power outage at his home that hasn't been fixed for 2-3 days, despite previous reports. The agent claims technicians visited the day before but left because no one answered the doorbell. The customer points out the logical fallacy: the electric doorbell doesn't work because there is no power. The call ends with the customer becoming verbally abusive towards the office staff.",
+        "overall_summary": "The video presents a contrast between poor and excellent customer service. Both interactions involve the same customer, Tabitha Ratched, who is calling about a missing package that was supposedly delivered. In the first interaction with Agent Claire, the conversation quickly deteriorates as Claire is dismissive, defensive, and lacks empathy, leading the customer to become irate and use foul language. In the second interaction with Agent Candice, the agent is empathetic, validates the customer's concerns, and provides a clear plan for resolution. This results in a positive outcome where the customer ends the call feeling satisfied and cooperative.",
         "foul_language_used_anywhere": true,
-        "foul_language_details": "The customer used the Malayalam slur 'naayinte mone' (son of a dog/bitch) directed at the employees."
+        "foul_language_details": "The customer, Tabitha, used the word 'fucking' during her interaction with Agent Claire at approximately 02:44."
     },
     "agents_analysis": [
         {
-            "agent_name": "Electricity Office Agent",
-            "behavior": "The agent remained calm and professional in tone. However, he displayed a significant lack of practical logic by justifying the technician's failure to resolve the issue because the electric calling bell wasn't answered during a power outage.",
-            "rating": "4/10, because while he was polite, the reasoning provided for the service failure was incompetent and frustrated the customer further."
+            "agent_name": "Claire",
+            "behavior": "Claire was dismissive, impatient, and displayed a lack of empathy. She relied on rigid protocols and scripts rather than listening to the customer's specific complaints. She became defensive and argumentative when the customer expressed frustration.",
+            "rating": "2/10",
+            "justification": "Her poor attitude and lack of soft skills escalated a simple customer complaint into a hostile interaction, resulting in a lost customer and a chargeback threat."
+        },
+        {
+            "agent_name": "Candice",
+            "behavior": "Candice was professional, empathetic, and proactive. She validated the customer's feelings, listened carefully to the details about the building's delivery system, and clearly explained the steps she would take to resolve the issue.",
+            "rating": "10/10",
+            "justification": "She successfully managed a frustrated customer by building rapport and providing a clear resolution path, maintaining the brand's reputation and customer loyalty."
         }
     ],
     "customer_analysis": {
-        "customer_name": "Unnamed Resident",
-        "genuineness": "The customer's issue appears genuine as he provides specific location details (near the Anganwadi) and points out a very logical flaw in the agent's story.",
-        "behavior": "Initially frustrated and complaining, the customer becomes sarcastically angry when he realizes the technician tried to use an electric bell during an outage. He eventually loses his temper and uses foul language.",
-        "satisfaction_level": "Very Dissatisfied, as his power issue remains unresolved and he feels the service department is incompetent."
+        "customer_name": "Tabitha Ratched",
+        "genuineness": "The customer's issue appears highly genuine as she provides specific details about her building's concierge service and the lack of a front porch, which contradicts the delivery notes.",
+        "behavior": "Tabitha's behavior is reactive. With the rude agent, she becomes hostile, uses profanity, and threatens to dispute the charge. With the helpful agent, she remains calm, follows instructions, and expresses gratitude.",
+        "satisfaction_level": "Varies significantly: Very Dissatisfied with Claire; Satisfied and cooperative with Candice."
     },
     "segments": [
         {
-            "speaker": "Customer",
+            "speaker": "Aisha (Narrator)",
             "start_time": "00:00",
-            "end_time": "00:01",
-            "language": "Malayalam",
+            "end_time": "00:20",
+            "language": "English",
             "emotion": "Neutral",
-            "text": "Hello.",
+            "text": "This is Claire and this is Candice, and today they're going to handle the same issue from the same customer, Tabitha Ratched. The point of this video is to show you the difference between bad and great customer service. And what I want you to do is notice the difference between the two and then comment down below your observations. All right, let's begin.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Agent",
-            "start_time": "00:01",
-            "end_time": "00:02",
-            "language": "Malayalam",
+            "speaker": "Claire",
+            "start_time": "00:21",
+            "end_time": "00:26",
+            "language": "English",
             "emotion": "Neutral",
-            "text": "Hello, parayu.",
+            "text": "Thank you for calling Quest Sean, this is Claire. How may I help you today?",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Customer",
-            "start_time": "00:02",
-            "end_time": "00:07",
-            "language": "Malayalam",
-            "emotion": "Neutral",
-            "text": "Ithu matte electrical... electricity office? Njan matte panchayathinte aduth oru anganwadi ille?",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Agent",
-            "start_time": "00:07",
-            "end_time": "00:08",
-            "language": "Malayalam",
-            "emotion": "Neutral",
-            "text": "Undu, manasilayi.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Customer",
-            "start_time": "00:08",
-            "end_time": "00:22",
-            "language": "Malayalam",
-            "emotion": "Sad",
-            "text": "Aa anganwadite thotta veedanu. Njan oru randu moonu divasam munne vilichunnu. Veetil mathram current illa, bakki ellayidathum current undu. Athonnu vannu nokkan paranjittu ningal ithuvare vannillalo. Entha ithu?",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Agent",
-            "start_time": "00:22",
-            "end_time": "00:24",
-            "language": "Malayalam",
-            "emotion": "Neutral",
-            "text": "Ningal vilichu paranjittundayirunnu, randu divasam munne.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Customer",
-            "start_time": "00:24",
-            "end_time": "00:25",
-            "language": "Malayalam",
-            "emotion": "Neutral",
-            "text": "Aa, paranjundayirunnu.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Agent",
-            "start_time": "00:25",
-            "end_time": "00:28",
-            "language": "Malayalam",
-            "emotion": "Neutral",
-            "text": "Ennittu innalle vannirunnalo avide.",
-            "used_foul_language": false,
-            "foul_language_detected": null
-        },
-        {
-            "speaker": "Customer",
-            "start_time": "00:28",
-            "end_time": "00:31",
-            "language": "Malayalam",
+            "speaker": "Tabitha",
+            "start_time": "00:27",
+            "end_time": "00:43",
+            "language": "English",
             "emotion": "Angry",
-            "text": "Innale aaru vannu? Current illa ippozhum veettilo!",
+            "text": "I still have not received my order. You said I would receive it on the 20th. It's now the 22nd, still nothing. I don't know what's going on, but if it's not too much of a bother to you, I would really, really now love to get what I paid for. You know what I mean?",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Agent",
-            "start_time": "00:31",
-            "end_time": "00:35",
-            "language": "Malayalam",
+            "speaker": "Claire",
+            "start_time": "00:44",
+            "end_time": "00:48",
+            "language": "English",
             "emotion": "Neutral",
-            "text": "Innale vannittu ippo orupaadu thavana calling bell adichu. Pakshe ningal aarum purathu vannilla.",
+            "text": "Okay. May I have the order number and your first name?",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Customer",
-            "start_time": "00:35",
-            "end_time": "00:41",
-            "language": "Malayalam",
+            "speaker": "Tabitha",
+            "start_time": "00:49",
+            "end_time": "00:52",
+            "language": "English",
             "emotion": "Angry",
-            "text": "Aa... bell adichittu karyamilla. Bell work cheyyilla. Current ille? Current undayirunnalle bell work cheyyullu!",
+            "text": "498-4977. Tabitha Ratched.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Agent",
-            "start_time": "00:41",
-            "end_time": "00:42",
-            "language": "Malayalam",
+            "speaker": "Claire",
+            "start_time": "00:53",
+            "end_time": "00:57",
+            "language": "English",
             "emotion": "Neutral",
-            "text": "Aa, current illa avide.",
+            "text": "Thank you. Let me just check that here.",
             "used_foul_language": false,
             "foul_language_detected": null
         },
         {
-            "speaker": "Customer",
-            "start_time": "00:42",
-            "end_time": "00:50",
-            "language": "Malayalam",
+            "speaker": "Tabitha",
+            "start_time": "00:58",
+            "end_time": "01:21",
+            "language": "English",
             "emotion": "Angry",
-            "text": "Ippo current illa ennu paranjittu thanne alle ningale vilichu varuthiyathu? Ningal ethu naayinte mone aanu pani eduthe... thenga!",
+            "text": "I mean it's ridiculous. If there's a delay you could just tell me. It's not like you don't have my email or anything. You didn't notify me at all. If I forgot that I ordered it, which by the way happens sometimes, then I'd completely be paying for nothing.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "01:22",
+            "end_time": "01:25",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "One moment please while I check your order status.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "01:26",
+            "end_time": "01:31",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Unbelievable. Are you even listening to me?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "01:32",
+            "end_time": "01:34",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I am. That's why I'm going to check the status for you, okay?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "01:35",
+            "end_time": "01:36",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Okay fine, go ahead.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "01:37",
+            "end_time": "01:40",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "01:41",
+            "end_time": "01:54",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, according to the FedEx note here, your parcel was delivered on the 20th at 10 AM, and it was left on the front porch according to the notes.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "01:55",
+            "end_time": "02:22",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "What? You're kidding, right? Okay. Okay, first of all, my apartment has no front porch. Second, the only way to deliver parcels in our residence is by leaving them to the concierge. That's it. Third, I was at home the whole day on the 20th and no one, literally no one knocked on my door or called my number to notify me of a parcel. So whatever this FedEx guy is saying, he's lying. Okay? He's lying.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "02:23",
+            "end_time": "02:30",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Have you tried checking with the building's concierge to see if they've kept a package for you, or...",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "02:31",
+            "end_time": "02:36",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I just checked this morning and the answer is no! There's no parcel, otherwise I wouldn't be calling you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "02:37",
+            "end_time": "02:41",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "How about your neighbors? Have you checked with them to see if they received your parcel?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "02:42",
+            "end_time": "03:00",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Just... just what light of questioning is this? Are you saying that my neighbors stole my parcel? No, no, no, you're not listening to me. I told you I was in the apartment the entire fucking day. If someone delivered a parcel, the concierge would have received it by now.",
             "used_foul_language": true,
-            "foul_language_detected": "naayinte mone"
+            "foul_language_detected": "fucking"
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "03:01",
+            "end_time": "03:15",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Tabitha, I'm just doing my job. This is standard protocol. We have to make sure that the receiver has checked all the possible places that the parcel could have been delivered.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "03:16",
+            "end_time": "03:30",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I know, but do your job right! You're not even trying. I've been spending my time here listening to you and the only thing you're doing so far is asking me dumb questions. Like what kind of service is this? I just want to get what I paid for.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "03:31",
+            "end_time": "03:34",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Please calm down Tabitha, I'm here to help you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "03:35",
+            "end_time": "03:38",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Then help me! And for God's sake do it well. Jesus Christ.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "03:39",
+            "end_time": "03:41",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, Tabitha, I'm sorry that this happened to you but...",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "03:42",
+            "end_time": "03:44",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Oh yes, I bet you are.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "03:45",
+            "end_time": "03:55",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, for us to resolve this I will send you an email. Please reply to that email to confirm in writing that you did not receive the parcel.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "03:56",
+            "end_time": "04:02",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Wait, I'm already talking to you. What do you need me to email you for? I'm telling you right now I did not receive my parcel, so do something about it now.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "04:03",
+            "end_time": "04:29",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "It's not that simple, Tabitha. You have to confirm in writing because that's what we're going to show FedEx so they can begin the investigation. So now, this is necessary to prove that we are not making this all up. Once a claim is filed, we will investigate and depending on the investigation it will take seven business days and then we can refund or replace or find your missing parcel.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "04:30",
+            "end_time": "04:43",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Or I could just file a dispute and get my money back. You know that I'm being nice right now, right? I'm contacting you first when I could have just phoned my bank and marked you as fraud in an instant. You know that, right?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "04:44",
+            "end_time": "04:53",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I wouldn't recommend that as that might poorly reflect on your credit score, especially that it shows delivered, you know. So the best option I recommend is to let us file a claim on your behalf.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "04:54",
+            "end_time": "05:00",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "You know what, with the ridiculousness of the situation, I can't even bring myself to be mad anymore. Like what is the point anyway? You basically have the emotional intelligence of a peanut.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "05:01",
+            "end_time": "05:03",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, so how would you like to proceed?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "05:04",
+            "end_time": "05:09",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Oh, it's not like I have a choice. Take care of it. Deal with FedEx. I didn't pay you to make me file the claim myself.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "05:10",
+            "end_time": "05:17",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, so after you confirm through email that you did not receive your parcel, I will file a PDNR for you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "05:18",
+            "end_time": "05:21",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "What's a PDNR?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "05:22",
+            "end_time": "05:25",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "It means Parcel Delivered Not Received and it will take five to seven business days.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "05:26",
+            "end_time": "05:32",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Okay, what happens if the parcel isn't found? Is a replacement available in your warehouse? I need a replacement for that, I don't want a refund.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "05:33",
+            "end_time": "05:46",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Um, since this is a dropship item, we don't have the item in stock in our warehouse, so I would first have to check with the dropship team for its availability. But yes, I will take note of that.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "05:47",
+            "end_time": "05:49",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "What's a dropship?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "05:50",
+            "end_time": "06:01",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "It means that the item is in another warehouse and we don't have the inventory for it. So we will first coordinate with the supplier.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "06:02",
+            "end_time": "06:21",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "You know what, you're making my head spin. So let me get this straight. Seven business days for the investigation, and if not found, which is probably the case 99% of the time, you're going to check with the team if it's available. And then what? Another seven days to deliver the replacement?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "06:22",
+            "end_time": "06:23",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yes, correct.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "06:24",
+            "end_time": "06:33",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Well, I tried to be nice to you guys but it seems like you left me no other choice. I will file a dispute and I will never shop from your site again.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "06:34",
+            "end_time": "06:51",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Tabitha, as much as I would like to help you, this is the best I can do for you. I have to follow the company policy. As I said, we can issue a replacement but we first have to file a claim and that will take five to seven business days. If that is too long for you to wait, I suggest you place another order.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "06:52",
+            "end_time": "06:54",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Just stop, okay? Just stop.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "06:55",
+            "end_time": "07:11",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I don't care anymore. I hope your company goes bankrupt and then no company will ever hire you again. Your attitude has been pretty disgusting, condescending from the moment you picked up the phone.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "07:12",
+            "end_time": "07:29",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Continue living your miserable life, I'm just going to go ahead and file that dispute. Bye-bye.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Claire",
+            "start_time": "07:30",
+            "end_time": "07:32",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "[Call disconnected]",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "07:33",
+            "end_time": "07:37",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you for calling Quest Sean, this is Candice. How may I help you?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "07:38",
+            "end_time": "07:56",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "I still have not received my order. You said I would receive it on the 20th. It's now the 22nd, still nothing. I don't know what's going on, but if it's not too much of a bother to you, I would really, really now love to get what I paid for. You know what I mean?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "07:57",
+            "end_time": "08:04",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Oh, if it's beyond the promised delivery date we definitely need to look into that. May I have the order number and your full name so I can check for you?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "08:05",
+            "end_time": "08:14",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "That's exactly what I'm thinking. The order number is 498-4977 and my name is Tabitha Ratched.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "08:15",
+            "end_time": "08:20",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you, Tabitha. I will now go ahead and pull up your order and hopefully I can give you an immediate answer. One moment please.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "08:21",
+            "end_time": "08:22",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "Go ahead. Thank you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "08:23",
+            "end_time": "08:44",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, like what you said, the estimated delivery date is on the 20th. It's now the 22nd, so it's two days late. Normally when a parcel is late like this, we send an email informing you of the delay. So let me visit the FedEx website and track it.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "08:45",
+            "end_time": "08:58",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Thank you, Candice. I actually haven't tried tracking it on the FedEx website since you already gave me the delivery date through email. So yes, please go ahead.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "08:59",
+            "end_time": "09:12",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay. According to the FedEx note here, your parcel was delivered on the 20th at 10 AM. It said that it was left on the front porch. Have you tried checking your front porch?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "09:13",
+            "end_time": "09:40",
+            "language": "English",
+            "emotion": "Angry",
+            "text": "What? What? You're kidding, right? Okay. First of all, my apartment has no front porch. Second, the only way to deliver parcels in our residence is by leaving them to the concierge. That's it. Third, I was at home the whole day on the 20th and no one, literally no one knocked on my door or called my number to notify me of a parcel. So whatever this FedEx guy is saying, he's lying.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "09:41",
+            "end_time": "09:45",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "That's definitely odd. Have you tried checking with your building's concierge to see if they kept a package for you?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "09:46",
+            "end_time": "09:48",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I just checked this morning and the answer is no.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "09:49",
+            "end_time": "09:55",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yeah. Your neighbors also wouldn't happen to receive it, right? Since as you said, all parcels go to the concierge.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "09:56",
+            "end_time": "10:10",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Correct. And if the note says he left it on my doorstep, again, that's impossible. No one can access our doorsteps here except us tenants. So there's clearly a mistake here.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "10:11",
+            "end_time": "10:32",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yes, that makes sense. So here's what we're going to do, Tabitha. It is likely that FedEx delivered the order to the wrong address, so I will file a PDNR claim on your behalf. It means Parcel Delivered Not Received. What this does is let FedEx investigate to find your missing parcel.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "10:33",
+            "end_time": "10:34",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "10:35",
+            "end_time": "10:55",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yeah, and for me to initiate the claim, I will send you an email right now. Please reply to that email confirming that you have not received your parcel. Your response to that email is very important because that will serve as the documentation proving to FedEx that you are requesting for us to file a claim.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "10:56",
+            "end_time": "11:01",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, whatever happens, I'm going to get my refund though, right?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "11:02",
+            "end_time": "11:07",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "You're right, of course. And the sooner they find your parcel, the better.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "11:08",
+            "end_time": "11:10",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Would you prefer a replacement or a refund?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "11:11",
+            "end_time": "11:12",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "I need a replacement for that, I don't want a refund.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "11:13",
+            "end_time": "11:14",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, I will make note of that.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "11:15",
+            "end_time": "11:27",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "And after the investigation, which usually takes five to seven business days, I will check with the supplier for its availability, and then they can process the replacement for you.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "11:28",
+            "end_time": "11:38",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, it's disappointing that this has to happen, but okay, whatever. At least I don't have to file a dispute. To be honest I was already thinking of calling my bank this morning.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "11:39",
+            "end_time": "12:01",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yes, this is definitely not the experience that we want you to have, but we will try our best to make this as easy as possible for you considering the situation. I will also keep this case in progress, so whatever questions you might have during the investigation, you just reply to the same email thread and I will be there to answer your questions.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "12:02",
+            "end_time": "12:12",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "So let me get this straight. Seven business days for the investigation, and if it isn't found, you're going to check with the team if it's available, and if it's available, another seven days to deliver the replacement?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "12:13",
+            "end_time": "12:22",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yes, Tabitha, that's correct. But of course if they find the parcel during the investigation then you don't need to wait that long. That's already the maximum timeframe.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "12:23",
+            "end_time": "12:31",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Yeah, well I hope they do, but I honestly don't have much hope for it. But okay, a replacement's fine I guess.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "12:32",
+            "end_time": "12:46",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, yeah, I cannot guarantee that 100% that they would find your missing parcel, but there have been cases in the past when they did find the missing parcel. I will of course update you throughout the process.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "12:47",
+            "end_time": "12:54",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, so I guess that's my best option. What do you need me to do? Just reply to your email saying that I didn't receive the parcel?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "12:55",
+            "end_time": "12:56",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "That's correct. I have just sent you the email.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "12:57",
+            "end_time": "13:01",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "All right, I will reply in five minutes. I'm going to have my lunch break. What was your name again?",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "13:02",
+            "end_time": "13:03",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Candice.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Tabitha",
+            "start_time": "13:04",
+            "end_time": "13:07",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "All right, Candice. Thank you so much, that's all I need for now. I have to go. Bye.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Candice",
+            "start_time": "13:08",
+            "end_time": "13:11",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "Okay, enjoy your lunch Tabitha. Thank you for calling Quest Sean. Bye.",
+            "used_foul_language": false,
+            "foul_language_detected": null
+        },
+        {
+            "speaker": "Aisha (Narrator)",
+            "start_time": "13:12",
+            "end_time": "13:38",
+            "language": "English",
+            "emotion": "Neutral",
+            "text": "All right, as you can see, this video is purely mock calls. If you want detailed explanations of all the things that Claire did wrong and Candice did right, head over to this video at the top... All right, I think that's all for today. It's really awkward vlogging outside but oh well, I gotta get used to it. Thank you for watching. Bye-bye.",
+            "used_foul_language": false,
+            "foul_language_detected": null
         }
     ]
 }

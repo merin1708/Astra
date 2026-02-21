@@ -1,5 +1,6 @@
 import os
 import json
+import subprocess
 from src.services.gemini_service import GeminiService
 
 def main():
@@ -42,6 +43,21 @@ def main():
              json.dump(detailed_summary_data, f, indent=4)
             
         print(f"Successfully saved the detailed summary report to '{summary_file}'")
+
+        print("\n--- Triggering Ardra Automated Pipeline ---")
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        ardra_dir = os.path.join(base_dir, 'ardra')
+        pipeline_script = os.path.join(ardra_dir, 'automated_pipeline.py')
+
+        if os.path.exists(pipeline_script):
+            try:
+                # Run the pipeline with CWD set to ardra so it resolves its relative paths properly
+                subprocess.run(["python", "automated_pipeline.py"], cwd=ardra_dir, check=True)
+                print(f"Ardra pipeline completed! Audit results saved to: {os.path.join(ardra_dir, 'output', 'audit_results.json')}")
+            except subprocess.CalledProcessError as e:
+                print(f"Error: Ardra pipeline failed with exit code {e.returncode}")
+        else:
+            print(f"Error: Could not find ardra pipeline script at {pipeline_script}")
 
 if __name__ == "__main__":
     main()

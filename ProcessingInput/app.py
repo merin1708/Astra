@@ -1,6 +1,7 @@
 import os
 import flask
 import json
+import subprocess
 from flask import Flask, request, jsonify, render_template
 from werkzeug.utils import secure_filename
 from src.services.gemini_service import GeminiService
@@ -19,12 +20,7 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024  # 20 MB max-limit (for Gemi
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
 
-# Initialize our AI Service
-try:
-    gemini_service = GeminiService()
-except ValueError as e:
-    print(f"Server Startup Error: {e}")
-    gemini_service = None
+# Gemini Service is initialized dynamically per-request to ensure fresh .env variables
 
 
 def allowed_file(filename):
@@ -57,13 +53,15 @@ def serve_output(filename):
 
 @app.route('/api/analyze', methods=['POST'])
 def analyze():
-    if not gemini_service:
-        return jsonify({"error": "Gemini Service not configured. Check API key."}), 500
+    try:
+        gemini_service = GeminiService()
+    except Exception as e:
+        return jsonify({"error": f"Gemini Service configuration error: {str(e)}"}), 500
 
     # 1. Check if it's raw text submitted
     if 'text_data' in request.form and request.form['text_data'].strip():
         text_content = request.form['text_data']
-        return process_analysis(text_content, is_text=True)
+        return process_analysis(text_content, gemini_service, is_text=True)
 
     # 2. Otherwise expect a file
     if 'file' not in request.files:
@@ -86,14 +84,14 @@ def analyze():
                 text_content = f.read()
             # Clean up the .txt file, we have it in memory
             os.remove(file_path)
-            return process_analysis(text_content, is_text=True)
+            return process_analysis(text_content, gemini_service, is_text=True)
         else:
-            return process_analysis(file_path, is_text=False)
+            return process_analysis(file_path, gemini_service, is_text=False)
             
     return jsonify({"error": "Invalid file type. Allowed: mp3, wav, txt, etc."}), 400
 
 
-def process_analysis(data, is_text=False):
+def process_analysis(data, gemini_service, is_text=False):
     """ Helper to run the Gemini analysis and save outputs """
     try:
         if is_text:
@@ -121,10 +119,31 @@ def process_analysis(data, is_text=False):
         with open(summary_file, 'w', encoding='utf-8') as f:
              json.dump(detailed_summary_data, f, indent=4)
              
+        # Trigger Ardra Automated Pipeline
+        print("\n--- Triggering Ardra Automated Pipeline from Web App ---")
+        base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        ardra_dir = os.path.join(base_dir, 'ardra')
+        pipeline_script = os.path.join(ardra_dir, 'automated_pipeline.py')
+
+        if os.path.exists(pipeline_script):
+            try:
+                subprocess.run(["python", "automated_pipeline.py"], cwd=ardra_dir, check=True)
+                
+                # Copy audit results to frontend output folder
+                import shutil
+                ardra_output = os.path.join(ardra_dir, 'output', 'audit_results.json')
+                if os.path.exists(ardra_output):
+                    shutil.copy(ardra_output, os.path.join(OUTPUT_FOLDER, 'audit_results.json'))
+                print(f"Ardra pipeline completed! Audit results saved.")
+            except subprocess.CalledProcessError as e:
+                print(f"Error: Ardra pipeline failed with exit code {e.returncode}")
+        else:
+            print(f"Error: Could not find ardra pipeline script at {pipeline_script}")
+             
         # Return success back to UI
         return jsonify({
             "success": True, 
-            "message": "Analysis completed successfully",
+            "message": "Analysis & Audit completed successfully",
             "data": result 
         }), 200
 

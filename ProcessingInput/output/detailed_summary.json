@@ -1,20 +1,27 @@
 {
     "detailed_summary": {
-        "overall_summary": "A customer calls the electricity office to complain about a power outage at his home that hasn't been fixed for 2-3 days, despite previous reports. The agent claims technicians visited the day before but left because no one answered the doorbell. The customer points out the logical fallacy: the electric doorbell doesn't work because there is no power. The call ends with the customer becoming verbally abusive towards the office staff.",
+        "overall_summary": "The video presents a contrast between poor and excellent customer service. Both interactions involve the same customer, Tabitha Ratched, who is calling about a missing package that was supposedly delivered. In the first interaction with Agent Claire, the conversation quickly deteriorates as Claire is dismissive, defensive, and lacks empathy, leading the customer to become irate and use foul language. In the second interaction with Agent Candice, the agent is empathetic, validates the customer's concerns, and provides a clear plan for resolution. This results in a positive outcome where the customer ends the call feeling satisfied and cooperative.",
         "foul_language_used_anywhere": true,
-        "foul_language_details": "The customer used the Malayalam slur 'naayinte mone' (son of a dog/bitch) directed at the employees."
+        "foul_language_details": "The customer, Tabitha, used the word 'fucking' during her interaction with Agent Claire at approximately 02:44."
     },
     "agents_analysis": [
         {
-            "agent_name": "Electricity Office Agent",
-            "behavior": "The agent remained calm and professional in tone. However, he displayed a significant lack of practical logic by justifying the technician's failure to resolve the issue because the electric calling bell wasn't answered during a power outage.",
-            "rating": "4/10, because while he was polite, the reasoning provided for the service failure was incompetent and frustrated the customer further."
+            "agent_name": "Claire",
+            "behavior": "Claire was dismissive, impatient, and displayed a lack of empathy. She relied on rigid protocols and scripts rather than listening to the customer's specific complaints. She became defensive and argumentative when the customer expressed frustration.",
+            "rating": "2/10",
+            "justification": "Her poor attitude and lack of soft skills escalated a simple customer complaint into a hostile interaction, resulting in a lost customer and a chargeback threat."
+        },
+        {
+            "agent_name": "Candice",
+            "behavior": "Candice was professional, empathetic, and proactive. She validated the customer's feelings, listened carefully to the details about the building's delivery system, and clearly explained the steps she would take to resolve the issue.",
+            "rating": "10/10",
+            "justification": "She successfully managed a frustrated customer by building rapport and providing a clear resolution path, maintaining the brand's reputation and customer loyalty."
         }
     ],
     "customer_analysis": {
-        "customer_name": "Unnamed Resident",
-        "genuineness": "The customer's issue appears genuine as he provides specific location details (near the Anganwadi) and points out a very logical flaw in the agent's story.",
-        "behavior": "Initially frustrated and complaining, the customer becomes sarcastically angry when he realizes the technician tried to use an electric bell during an outage. He eventually loses his temper and uses foul language.",
-        "satisfaction_level": "Very Dissatisfied, as his power issue remains unresolved and he feels the service department is incompetent."
+        "customer_name": "Tabitha Ratched",
+        "genuineness": "The customer's issue appears highly genuine as she provides specific details about her building's concierge service and the lack of a front porch, which contradicts the delivery notes.",
+        "behavior": "Tabitha's behavior is reactive. With the rude agent, she becomes hostile, uses profanity, and threatens to dispute the charge. With the helpful agent, she remains calm, follows instructions, and expresses gratitude.",
+        "satisfaction_level": "Varies significantly: Very Dissatisfied with Claire; Satisfied and cooperative with Candice."
     }
 }

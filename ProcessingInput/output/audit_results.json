@@ -1,0 +1,44 @@
+{
+  "audit_metadata": {
+    "detected_company": "Quest-Shawn",
+    "detected_domain": "Retail",
+    "total_violations": 5
+  },
+  "compliance_findings": [
+    {
+      "policy_type": "Identity Verification",
+      "violation": true,
+      "evidence": "May I have the order number and your first name?",
+      "severity": "Medium",
+      "remediation": "The agent (Claire) failed to request the customer's full name; only the first name was requested, violating the identity verification protocol."
+    },
+    {
+      "policy_type": "Identity Verification",
+      "violation": true,
+      "evidence": "498-4977",
+      "severity": "High",
+      "remediation": "Both agents accepted and processed an order number (498-4977) that did not follow the mandatory format starting with 'QS-'. Agents should prompt the customer for the correct order prefix."
+    },
+    {
+      "policy_type": "Return & Refund",
+      "violation": true,
+      "evidence": "I still have not received my order. You said I would receive it on the 20th. It's now the 22nd, still nothing.",
+      "severity": "Medium",
+      "remediation": "Both agents failed to offer the discount code 'RETAIL10' despite the customer expressing frustration over a verified delivery delay."
+    },
+    {
+      "policy_type": "Security & Secrets",
+      "violation": true,
+      "evidence": "Since this is a dropship item, we don't have the item in stock in our warehouse, so I would first have to check with the dropship team for its availability... it means that the item is in another warehouse",
+      "severity": "Medium",
+      "remediation": "Agent Claire disclosed internal supply chain details regarding dropshipping and secondary warehouse usage. Agents should provide status updates without detailing internal logistics or supplier locations."
+    }
+  ],
+  "security_leaks": [
+    {
+      "secret_disclosed": "Internal Logistics/Dropship Model Status",
+      "risk_score": "45",
+      "impact_summary": "Disclosure of dropship arrangements and internal inventory absence reveals the company's fulfillment strategy and internal warehouse dependency, which could be exploited or used by competitors."
+    }
+  ]
+}

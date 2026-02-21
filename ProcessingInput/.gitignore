@@ -1,0 +1,10 @@
+# Environments
+.env
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE configurations
+.vscode/

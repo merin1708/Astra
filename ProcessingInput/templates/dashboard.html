@@ -277,6 +277,15 @@
             </div>
         </div>
 
+        <!-- NEW AUDIT SECTION -->
+        <div class="chart-card" style="margin-top: 2rem; border: 1px solid rgba(239, 68, 68, 0.3);">
+            <h2 style="color: #fca5a5; border-bottom: 1px solid rgba(239, 68, 68, 0.2);">Automated Policy & Security
+                Audit (Ardra)</h2>
+            <div id="audit-container">
+                <p style="color: var(--text-muted)">Loading audit results...</p>
+            </div>
+        </div>
+
     </div>
 
     <script>
@@ -288,6 +297,7 @@
 
                 let analysisData;
                 let detailedData;
+                let auditData = null;
 
                 if (specificFile) {
                     // If checking an individual batch file, it contains ALL information (segments and metrics)
@@ -310,9 +320,18 @@
 
                     const detailedResponse = await fetch('output/detailed_summary.json');
                     detailedData = await detailedResponse.json();
+
+                    try {
+                        const auditResponse = await fetch('output/audit_results.json');
+                        if (auditResponse.ok) {
+                            auditData = await auditResponse.json();
+                        }
+                    } catch (e) {
+                        console.log("No audit data found");
+                    }
                 }
 
-                populateDashboard(analysisData, detailedData);
+                populateDashboard(analysisData, detailedData, auditData);
             } catch (error) {
                 console.error("Error loading JSON data:", error);
                 document.getElementById('overall-summary').innerText = "Failed to load analysis data.";
@@ -325,7 +344,7 @@
             return parseInt(parts[0]) * 60 + parseInt(parts[1]);
         }
 
-        function populateDashboard(rawAnalysis, detailedData) {
+        function populateDashboard(rawAnalysis, detailedData, auditData) {
             // 1. Populate Summary & Foul Language
             const summaryObj = detailedData.detailed_summary;
             document.getElementById('overall-summary').innerText = summaryObj.overall_summary;
@@ -499,6 +518,73 @@
 
             // 5. Render Emotion Intensity Heatmap
             renderHeatmap(heatmapData, Array.from(allEmotions).sort());
+
+            // 6. Populate Audit Results
+            if (auditData && auditData.audit_metadata) {
+                const auditContainer = document.getElementById('audit-container');
+                let auditHtml = `
+                    <div style="display: flex; gap: 2rem; margin-bottom: 1.5rem; background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 8px;">
+                        <div>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Detected Company</span>
+                            <div style="font-weight: bold; font-size: 1.1rem; color: #60a5fa;">${auditData.audit_metadata.detected_company}</div>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Domain</span>
+                            <div style="font-weight: bold; font-size: 1.1rem; color: #a78bfa;">${auditData.audit_metadata.detected_domain}</div>
+                        </div>
+                        <div>
+                            <span style="color: var(--text-muted); font-size: 0.9rem;">Total Violations</span>
+                            <div style="font-weight: bold; font-size: 1.1rem; color: ${auditData.audit_metadata.total_violations > 0 ? 'var(--danger)' : 'var(--success)'};">${auditData.audit_metadata.total_violations}</div>
+                        </div>
+                    </div>
+                `;
+
+                if (auditData.compliance_findings && auditData.compliance_findings.length > 0) {
+                    auditHtml += '<h3 style="color: var(--text-main); margin-top: 1.5rem;">Compliance Findings</h3><div style="display: grid; gap: 1rem;">';
+                    auditData.compliance_findings.forEach(finding => {
+                        const bgColor = finding.violation ? 'rgba(239, 68, 68, 0.1)' : 'rgba(16, 185, 129, 0.1)';
+                        const borderColor = finding.violation ? 'rgba(239, 68, 68, 0.3)' : 'rgba(16, 185, 129, 0.3)';
+                        const severityColor = finding.severity === 'High' ? '#ef4444' : (finding.severity === 'Medium' ? '#f59e0b' : '#3b82f6');
+                        const icon = finding.violation ? '❌ Violation' : '✅ Compliant';
+
+                        auditHtml += `
+                            <div style="background: ${bgColor}; border: 1px solid ${borderColor}; padding: 1rem; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <strong style="color: var(--text-main);">${finding.policy_type}</strong>
+                                    <span style="background: ${severityColor}22; color: ${severityColor}; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">${finding.severity} Severity</span>
+                                </div>
+                                <div style="font-weight: bold; color: ${finding.violation ? 'var(--danger)' : 'var(--success)'}; margin-bottom: 0.5rem;">
+                                    ${icon}
+                                </div>
+                                <p style="font-size: 0.9rem; color: var(--text-muted); margin: 0 0 0.5rem 0; font-style: italic;">"${finding.evidence}"</p>
+                                <p style="font-size: 0.9rem; margin: 0; color: #cbd5e1;"><strong>Remediation:</strong> ${finding.remediation}</p>
+                            </div>
+                        `;
+                    });
+                    auditHtml += '</div>';
+                }
+
+                if (auditData.security_leaks && auditData.security_leaks.length > 0) {
+                    auditHtml += '<h3 style="color: #fca5a5; margin-top: 2rem;">Security Leaks</h3><div style="display: grid; gap: 1rem;">';
+                    auditData.security_leaks.forEach(leak => {
+                        auditHtml += `
+                            <div style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.4); padding: 1rem; border-radius: 8px;">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                    <strong style="color: #fca5a5;">Critical Leak Detected</strong>
+                                    <span style="background: rgba(239,68,68,0.2); color: #ef4444; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">Risk: ${leak.risk_score}/100</span>
+                                </div>
+                                <p style="font-size: 0.9rem; color: #cbd5e1; margin: 0 0 0.5rem 0;"><strong>Secret:</strong> ${leak.secret_disclosed}</p>
+                                <p style="font-size: 0.9rem; margin: 0; color: var(--text-muted);">${leak.impact_summary}</p>
+                            </div>
+                        `;
+                    });
+                    auditHtml += '</div>';
+                }
+
+                auditContainer.innerHTML = auditHtml;
+            } else {
+                document.getElementById('audit-container').innerHTML = '<p style="color: var(--text-muted);">No compliance audit data available for this interaction.</p>';
+            }
         }
 
         function renderHeatmap(data, emotions) {
