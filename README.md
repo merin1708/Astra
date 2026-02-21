@@ -38,8 +38,24 @@ The NexaTalk system operates on a multi-stage, AI-driven pipeline:
 3. **Dynamic Domain Routing (`ardra/domain_router.py`)**:
    - Uses Gemini to semantically analyze the isolated transcript to identify the active Company and Sector.
 
-4. **Policy Retrieval (SQL RAG)**:
-   - Queries the `database.db` via SQLModel, extracting localized Standard Operating Procedures and Security rules.
+4. **Configurable Client Context (Policy Retrieval)**:
+   - Queries the local `transight_intelligence.db` via SQLModel. The system uses a **simple, highly configurable database schema** to store and map localized Standard Operating Procedures and Security rules. This allows new clients or rulebooks to be onboarded instantly without retraining the AI models.
+   
+   **Database Schema (`database.py`):**
+   - **`Company` Table**: Stores the core client information.
+     - `id` (Primary Key, Integer)
+     - `name` (String, Indexed) - e.g., "Quest-Shawn"
+     - `domain` (String) - e.g., "Retail", "Banking"
+   - **`Product` Table**: Stores products associated with a specific company.
+     - `id` (Primary Key, Integer)
+     - `company_id` (Foreign Key, Integer)
+     - `product_name` (String)
+     - `description` (String)
+   - **`Policy` Table**: Stores business rules and mandatory compliance steps.
+     - `id` (Primary Key, Integer)
+     - `company_id` (Foreign Key, Integer)
+     - `policy_type` (String) - e.g., "Identity Verification", "Security & Secrets", "Return & Refund"
+     - `rules_json` (String) - The exact mandatory compliance steps stored as a flexible JSON string for direct injection into the LLM prompt.
 
 5. **The Semantic Dual-Gate Audit**:
    - Injects both the isolated transcript and specific retrieved policies into a sophisticated auditing LLM prompt.
@@ -107,3 +123,4 @@ Contributions are welcome. Please open an issue or submit a pull request for imp
 
 ## Contact
 Team Astra Project Link: [https://github.com/merin1708/Astra](https://github.com/merin1708/Astra)
+ithub.com/merin1708/Astra)
